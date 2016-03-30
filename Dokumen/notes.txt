@@ -1,0 +1,1 @@
+Jumlah tahap dalam Fast Fourier Transform bergantung kepada jumlah input sampel (N). Jumlah input ini didefinisikan sebagai jumlah sampel pada setiap frame yang sudah ditentukan pada proses frame blocking. Jumlah tahapan pada proses FFT ini ditentukan dengan ?Log?_2  (N). Jika jumlah sampel dalam frame (N) adalah 256, maka akan ada 8 tahap dalam Fast Fourier Transform.
