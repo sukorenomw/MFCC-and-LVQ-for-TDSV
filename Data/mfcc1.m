@@ -13,7 +13,7 @@ http://dsp.stackexchange.com/questions/26083/verifying-mfcc-final-result
 close all;
 #{Step 0: Reading the File & initializing the Time and Freq.
 #}
-    [x,fs,nbits]=wavread('test1.wav');
+    [x,fs,nbits]=wavread('Reno\buka1.wav');
     x=x(x <= -0.00021 | x >= 0.00021);
     ts=1/fs;
     N=length(x);
@@ -120,7 +120,7 @@ Step 6: Nautral Log and DCT
     figure 
     hold on
     for i=1:NumFrames
-        plot(lnd(i,:)),xlabel('Number of Filters'),ylabel('MFCC value');
+        plot(lnd(i,:)),xlabel('Number of Coefficients'),ylabel('MFCC value');
     end
     hold off
     
