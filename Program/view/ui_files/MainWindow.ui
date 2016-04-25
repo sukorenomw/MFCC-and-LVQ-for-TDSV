@@ -1,0 +1,412 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWdw</class>
+ <widget class="QMainWindow" name="MainWdw">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>673</width>
+    <height>458</height>
+   </rect>
+  </property>
+  <property name="sizePolicy">
+   <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+    <horstretch>0</horstretch>
+    <verstretch>0</verstretch>
+   </sizepolicy>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>673</width>
+    <height>458</height>
+   </size>
+  </property>
+  <property name="maximumSize">
+   <size>
+    <width>672</width>
+    <height>458</height>
+   </size>
+  </property>
+  <property name="windowTitle">
+   <string>Text Dependent Speaker Verification</string>
+  </property>
+  <property name="windowIcon">
+   <iconset resource="image_set.qrc">
+    <normaloff>:/icons/other-python-icon.png</normaloff>:/icons/other-python-icon.png</iconset>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <widget class="QFrame" name="testingFrame">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>0</y>
+      <width>661</width>
+      <height>351</height>
+     </rect>
+    </property>
+    <property name="frameShape">
+     <enum>QFrame::StyledPanel</enum>
+    </property>
+    <property name="frameShadow">
+     <enum>QFrame::Raised</enum>
+    </property>
+    <zorder>trainingFrame</zorder>
+   </widget>
+   <widget class="QFrame" name="trainingFrame">
+    <property name="enabled">
+     <bool>true</bool>
+    </property>
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>0</y>
+      <width>671</width>
+      <height>421</height>
+     </rect>
+    </property>
+    <property name="whatsThis">
+     <string/>
+    </property>
+    <property name="frameShape">
+     <enum>QFrame::StyledPanel</enum>
+    </property>
+    <property name="frameShadow">
+     <enum>QFrame::Plain</enum>
+    </property>
+    <widget class="QGroupBox" name="featureExtGroup">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>10</y>
+       <width>651</width>
+       <height>181</height>
+      </rect>
+     </property>
+     <property name="title">
+      <string>Feature Extraction</string>
+     </property>
+     <widget class="QPushButton" name="openAudioBtn">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>22</y>
+        <width>91</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Open Audio File</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="audioFilenameLbl">
+      <property name="geometry">
+       <rect>
+        <x>110</x>
+        <y>30</y>
+        <width>151</width>
+        <height>16</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <weight>50</weight>
+        <bold>false</bold>
+       </font>
+      </property>
+      <property name="text">
+       <string>Audio name</string>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="audioClassInput">
+      <property name="geometry">
+       <rect>
+        <x>390</x>
+        <y>30</y>
+        <width>113</width>
+        <height>20</height>
+       </rect>
+      </property>
+     </widget>
+     <widget class="QLabel" name="audioClassLbl">
+      <property name="geometry">
+       <rect>
+        <x>390</x>
+        <y>10</y>
+        <width>81</width>
+        <height>16</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Output Class :</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="extractSaveBtn">
+      <property name="geometry">
+       <rect>
+        <x>514</x>
+        <y>10</y>
+        <width>121</width>
+        <height>41</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Extract &amp;&amp; Save</string>
+      </property>
+     </widget>
+     <widget class="QTableWidget" name="featuresTbl">
+      <property name="geometry">
+       <rect>
+        <x>260</x>
+        <y>70</y>
+        <width>381</width>
+        <height>101</height>
+       </rect>
+      </property>
+     </widget>
+     <widget class="QLabel" name="featureExtLbl">
+      <property name="geometry">
+       <rect>
+        <x>260</x>
+        <y>50</y>
+        <width>81</width>
+        <height>16</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Features : </string>
+      </property>
+     </widget>
+     <widget class="Phonon::SeekSlider" name="seekSlider">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>90</y>
+        <width>171</width>
+        <height>22</height>
+       </rect>
+      </property>
+     </widget>
+     <widget class="QLCDNumber" name="lcdNumber">
+      <property name="geometry">
+       <rect>
+        <x>190</x>
+        <y>90</y>
+        <width>64</width>
+        <height>23</height>
+       </rect>
+      </property>
+     </widget>
+     <widget class="Phonon::VolumeSlider" name="volumeSlider">
+      <property name="geometry">
+       <rect>
+        <x>140</x>
+        <y>140</y>
+        <width>109</width>
+        <height>22</height>
+       </rect>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="audioPlayBtn">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>130</y>
+        <width>41</width>
+        <height>41</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="icon">
+       <iconset resource="image_set.qrc">
+        <normaloff>:/icons/1461587404_play-arrow.png</normaloff>:/icons/1461587404_play-arrow.png</iconset>
+      </property>
+      <property name="iconSize">
+       <size>
+        <width>16</width>
+        <height>16</height>
+       </size>
+      </property>
+      <property name="flat">
+       <bool>false</bool>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="audioPauseBtn">
+      <property name="geometry">
+       <rect>
+        <x>50</x>
+        <y>130</y>
+        <width>41</width>
+        <height>41</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="icon">
+       <iconset resource="image_set.qrc">
+        <normaloff>:/icons/1461587409_Pause_Icon.png</normaloff>:/icons/1461587409_Pause_Icon.png</iconset>
+      </property>
+      <property name="iconSize">
+       <size>
+        <width>22</width>
+        <height>22</height>
+       </size>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="audioStopBtn">
+      <property name="geometry">
+       <rect>
+        <x>90</x>
+        <y>130</y>
+        <width>41</width>
+        <height>41</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="icon">
+       <iconset resource="image_set.qrc">
+        <normaloff>:/icons/1461587394_black_4_audio_stop.png</normaloff>:/icons/1461587394_black_4_audio_stop.png</iconset>
+      </property>
+     </widget>
+    </widget>
+    <widget class="QGroupBox" name="trainDataGroup">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>200</y>
+       <width>651</width>
+       <height>211</height>
+      </rect>
+     </property>
+     <property name="title">
+      <string>Training Data</string>
+     </property>
+     <widget class="QTableWidget" name="newWeightTbl">
+      <property name="geometry">
+       <rect>
+        <x>225</x>
+        <y>30</y>
+        <width>421</width>
+        <height>171</height>
+       </rect>
+      </property>
+     </widget>
+     <widget class="QLabel" name="newWeightLbl">
+      <property name="geometry">
+       <rect>
+        <x>570</x>
+        <y>10</y>
+        <width>71</width>
+        <height>20</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>New Weight : </string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="trainDataBtn">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>30</y>
+        <width>75</width>
+        <height>41</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Train Data</string>
+      </property>
+     </widget>
+     <widget class="QProgressBar" name="trainProgress">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>180</y>
+        <width>201</width>
+        <height>23</height>
+       </rect>
+      </property>
+      <property name="value">
+       <number>24</number>
+      </property>
+     </widget>
+    </widget>
+   </widget>
+  </widget>
+  <widget class="QMenuBar" name="menubar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>673</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <widget class="QMenu" name="menuMenu">
+    <property name="title">
+     <string>Menu</string>
+    </property>
+    <addaction name="actionTraining_Data"/>
+    <addaction name="actionTest_Data"/>
+    <addaction name="separator"/>
+    <addaction name="actionExit"/>
+   </widget>
+   <widget class="QMenu" name="menuAbout">
+    <property name="title">
+     <string>About</string>
+    </property>
+   </widget>
+   <addaction name="menuMenu"/>
+   <addaction name="menuAbout"/>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
+  <action name="actionTraining_Data">
+   <property name="icon">
+    <iconset resource="image_set.qrc">
+     <normaloff>:/icons/data-data-recovery-icon.png</normaloff>:/icons/data-data-recovery-icon.png</iconset>
+   </property>
+   <property name="text">
+    <string>Training Data</string>
+   </property>
+  </action>
+  <action name="actionTest_Data">
+   <property name="icon">
+    <iconset resource="image_set.qrc">
+     <normaloff>:/icons/data-accept-database-icon.png</normaloff>:/icons/data-accept-database-icon.png</iconset>
+   </property>
+   <property name="text">
+    <string>Test Data</string>
+   </property>
+  </action>
+  <action name="actionExit">
+   <property name="icon">
+    <iconset resource="image_set.qrc">
+     <normaloff>:/icons/exit-icon.png</normaloff>:/icons/exit-icon.png</iconset>
+   </property>
+   <property name="text">
+    <string>Exit</string>
+   </property>
+  </action>
+ </widget>
+ <customwidgets>
+  <customwidget>
+   <class>Phonon::SeekSlider</class>
+   <extends>QWidget</extends>
+   <header location="global">phonon/seekslider.h</header>
+  </customwidget>
+  <customwidget>
+   <class>Phonon::VolumeSlider</class>
+   <extends>QWidget</extends>
+   <header location="global">phonon/volumeslider.h</header>
+  </customwidget>
+ </customwidgets>
+ <resources>
+  <include location="image_set.qrc"/>
+ </resources>
+ <connections/>
+</ui>

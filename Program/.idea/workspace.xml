@@ -1,7 +1,64 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="4984340f-e880-4a5a-9ef6-683750ab9539" name="Default" comment="" />
+    <list default="true" id="4984340f-e880-4a5a-9ef6-683750ab9539" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/view/ui_files/1461587394_black_4_audio_stop.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/view/ui_files/1461587404_play-arrow.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/view/ui_files/1461587409_Pause_Icon.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/view/ui_files/MainWindow.ui" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/view/ui_files/data-accept-database-icon.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/view/ui_files/data-data-recovery-icon.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/view/ui_files/exit-icon.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/view/ui_files/other-python-icon.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Main.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/controller/__init__.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/controller/trainingWindowController.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/view/__init__.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/view/image_set_rc.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/view/trainingWindow.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/view/ui_files/image_set.qrc" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../Data/Jeremy/buka1.wav" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../Data/Jeremy/buka2.wav" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../Data/Jeremy/buka3.wav" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../Data/Jeremy/buka4.wav" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../Data/Jeremy/buka5.wav" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../Data/Jeremy/kunci1.wav" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../Data/Jeremy/kunci2.wav" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../Data/Jeremy/kunci3.wav" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../Data/Jeremy/kunci4.wav" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../Data/Jeremy/kunci5.wav" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../Data/Jeremy/lock1.wav" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../Data/Jeremy/lock2.wav" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../Data/Jeremy/lock3.wav" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../Data/Jeremy/lock4.wav" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../Data/Jeremy/lock5.wav" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../Data/Jeremy/unlock1.wav" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../Data/Jeremy/unlock2.wav" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../Data/Jeremy/unlock3.wav" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../Data/Jeremy/unlock4.wav" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../Data/Jeremy/unlock5.wav" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../Data/Reno/buka1.wav" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../Data/Reno/buka2.wav" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../Data/Reno/buka3.wav" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../Data/Reno/buka4.wav" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../Data/Reno/buka5.wav" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../Data/Reno/kunci1.wav" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../Data/Reno/kunci2.wav" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../Data/Reno/kunci3.wav" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../Data/Reno/kunci4.wav" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../Data/Reno/kunci5.wav" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../Data/Reno/lock1.wav" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../Data/Reno/lock2.wav" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../Data/Reno/lock3.wav" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../Data/Reno/lock4.wav" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../Data/Reno/lock5.wav" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../Data/Reno/unlock1.wav" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../Data/Reno/unlock2.wav" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../Data/Reno/unlock3.wav" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../Data/Reno/unlock4.wav" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../Data/Reno/unlock5.wav" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+    </list>
     <ignored path="Program.iws" />
     <ignored path=".idea/workspace.xml" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -19,12 +76,78 @@
   <component name="FavoritesManager">
     <favorites_list name="Program" />
   </component>
+  <component name="FileEditorManager">
+    <leaf>
+      <file leaf-file-name="trainingWindow.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/view/trainingWindow.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="112">
+              <caret line="82" column="32" selection-start-line="82" selection-start-column="26" selection-end-line="82" selection-end-column="32" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="trainingWindowController.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/controller/trainingWindowController.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="136">
+              <caret line="8" column="35" selection-start-line="8" selection-start-column="35" selection-end-line="8" selection-end-column="35" />
+              <folding>
+                <element signature="e#0#10#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Main.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/Main.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="153">
+              <caret line="9" column="25" selection-start-line="9" selection-start-column="25" selection-end-line="9" selection-end-column="25" />
+              <folding>
+                <element signature="e#0#17#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="__init__.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/controller/__init__.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="31" selection-start-line="0" selection-start-column="31" selection-end-line="0" selection-end-column="31" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Python Script" />
+      </list>
+    </option>
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/view/TrainingWindow.py" />
+        <option value="$PROJECT_DIR$/controller/__init__.py" />
+        <option value="$PROJECT_DIR$/Main.py" />
+        <option value="$PROJECT_DIR$/controller/TrainingWindowController.py" />
+        <option value="$PROJECT_DIR$/controller/trainingWindowController.py" />
+      </list>
+    </option>
+  </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="10" />
-    <option name="y" value="50" />
+    <option name="x" value="-1" />
+    <option name="y" value="57" />
     <option name="width" value="1346" />
     <option name="height" value="698" />
   </component>
@@ -53,7 +176,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scratches" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -62,12 +185,81 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
           </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Program" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Program" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Program" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Program" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="controller" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
         </subPane>
       </pane>
-      <pane id="Scope" />
+      <pane id="Scratches" />
     </panes>
   </component>
-  <component name="RunManager">
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="E:\College\SKRIPSI TA\Program\model" />
+      <recent name="E:\College\SKRIPSI TA\Program\view" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="E:\College\SKRIPSI TA\Program\view" />
+      <recent name="E:\College\SKRIPSI TA\Program\view\ui_files" />
+      <recent name="E:\College\SKRIPSI TA\Program\controller" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Python.Main">
+    <configuration default="false" name="TrainingWindowController" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/controller" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="Program" />
+      <option name="SCRIPT_NAME" value="E:\College\SKRIPSI TA\Program\controller\trainingWindowController.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <method />
+    </configuration>
+    <configuration default="false" name="trainingWindowController" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/controller" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="Program" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/controller/trainingWindowController.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <method />
+    </configuration>
     <configuration default="true" type="PythonConfigurationType" factoryName="Python">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -202,6 +394,52 @@
       <option name="USE_KEYWORD" value="false" />
       <method />
     </configuration>
+    <configuration default="false" name="TrainingWindow" type="PythonConfigurationType" factoryName="Python">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/view" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="Program" />
+      <option name="SCRIPT_NAME" value="E:\College\SKRIPSI TA\Program\view\trainingWindow.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <method />
+    </configuration>
+    <configuration default="false" name="Main" type="PythonConfigurationType" factoryName="Python">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="Program" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Main.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <method />
+    </configuration>
+    <list size="4">
+      <item index="0" class="java.lang.String" itemvalue="Python.TrainingWindow" />
+      <item index="1" class="java.lang.String" itemvalue="Python.TrainingWindowController" />
+      <item index="2" class="java.lang.String" itemvalue="Python.Main" />
+      <item index="3" class="java.lang.String" itemvalue="Python.trainingWindowController" />
+    </list>
+    <recent_temporary>
+      <list size="2">
+        <item index="0" class="java.lang.String" itemvalue="Python.trainingWindowController" />
+        <item index="1" class="java.lang.String" itemvalue="Python.TrainingWindowController" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="ShelveChangesManager" show_recycled="false">
     <option name="remove_strategy" value="false" />
@@ -217,26 +455,26 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="10" y="50" width="1346" height="698" extended-state="0" />
+    <frame x="-1" y="57" width="1346" height="698" extended-state="0" />
     <editor active="false" />
     <layout>
       <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24962406" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
-      <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24962406" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32993197" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32993197" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39965987" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="VcsContentAnnotationSettings">
@@ -245,5 +483,91 @@
   <component name="XDebuggerManager">
     <breakpoint-manager />
     <watches-manager />
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/test/__init__.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/model/__init__.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/view/__init__.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/view/img_rc.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-3723">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://E:/server/Other/bug2.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-204">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/view/trainingWindow.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="112">
+          <caret line="82" column="32" selection-start-line="82" selection-start-column="26" selection-end-line="82" selection-end-column="32" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$APPLICATION_HOME_DIR$/helpers/pydev/pydevd.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="108">
+          <caret line="936" column="0" selection-start-line="936" selection-start-column="0" selection-end-line="936" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/controller/__init__.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="31" selection-start-line="0" selection-start-column="31" selection-end-line="0" selection-end-column="31" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/controller/trainingWindowController.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="8" column="35" selection-start-line="8" selection-start-column="35" selection-end-line="8" selection-end-column="35" />
+          <folding>
+            <element signature="e#0#10#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Main.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="9" column="25" selection-start-line="9" selection-start-column="25" selection-end-line="9" selection-end-column="25" />
+          <folding>
+            <element signature="e#0#17#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
   </component>
 </project>

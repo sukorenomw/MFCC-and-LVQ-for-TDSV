@@ -1,0 +1,11 @@
+<RCC>
+  <qresource prefix="icons">
+    <file>other-python-icon.png</file>
+    <file>1461587394_black_4_audio_stop.png</file>
+    <file>1461587404_play-arrow.png</file>
+    <file>1461587409_Pause_Icon.png</file>
+    <file>data-accept-database-icon.png</file>
+    <file>data-data-recovery-icon.png</file>
+    <file>exit-icon.png</file>
+  </qresource>
+</RCC>
