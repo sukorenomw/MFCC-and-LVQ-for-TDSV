@@ -1,5 +1,7 @@
 <RCC>
   <qresource prefix="icons">
+    <file>qt.png</file>
+    <file>icon-why-dark.png</file>
     <file>other-python-icon.png</file>
     <file>1461587394_black_4_audio_stop.png</file>
     <file>1461587404_play-arrow.png</file>
