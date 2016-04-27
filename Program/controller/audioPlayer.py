@@ -20,19 +20,19 @@ class AudioPlayer():
         self.audioPlayBtn = audioPlayBtn
         self.audioPauseBtn = audioPauseBtn
         self.audioStopBtn = audioStopBtn
-        self.initAudioPlayer()
+        self.init_audio_player()
 
-    def setAudioSource(self, audiofile):
+    def set_audio_source(self, audiofile):
         self.mediaObject.setCurrentSource(Phonon.MediaSource(audiofile))
 
-    def initAudioPlayer(self):
+    def init_audio_player(self):
         self.audioOutput = Phonon.AudioOutput(Phonon.MusicCategory)
         self.mediaObject = Phonon.MediaObject()
         self.metaInformationResolver = Phonon.MediaObject()
 
         self.mediaObject.setTickInterval(1000)
         self.mediaObject.tick.connect(self.tick)
-        self.mediaObject.stateChanged.connect(self.stateChanged)
+        self.mediaObject.stateChanged.connect(self.state_change)
         self.mediaObject.finished.connect(self.mediaObject.stop)
 
         Phonon.createPath(self.mediaObject, self.audioOutput)
@@ -47,7 +47,7 @@ class AudioPlayer():
         displayTime = QtCore.QTime(0, (time / 60000) % 60, (time / 1000) % 60)
         self.lcdNumber.display(displayTime.toString('mm:ss'))
 
-    def stateChanged(self, newState, oldState):
+    def state_change(self, newState, oldState):
         if newState == Phonon.ErrorState:
             if self.mediaObject.errorType() == Phonon.FatalError:
                 QtGui.QMessageBox.warning(self, "Fatal Error",

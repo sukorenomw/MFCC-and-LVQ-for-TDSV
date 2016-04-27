@@ -6,6 +6,7 @@ from PyQt4 import QtGui
 def main():
     app = QtGui.QApplication(sys.argv)
     mainWdw = controller.trainingWindowController.MainWindow()
+    # mainWdw = controller.testingWindowController.TestingWindow()
     mainWdw.show()
     sys.exit(app.exec_())
 

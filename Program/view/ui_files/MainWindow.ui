@@ -29,7 +29,7 @@
    </size>
   </property>
   <property name="windowTitle">
-   <string>Text Dependent Speaker Verification</string>
+   <string>Text Dependent Speaker Verification - Training</string>
   </property>
   <property name="windowIcon">
    <iconset resource="image_set.qrc">
@@ -51,7 +51,6 @@
     <property name="frameShadow">
      <enum>QFrame::Raised</enum>
     </property>
-    <zorder>trainingFrame</zorder>
    </widget>
    <widget class="QFrame" name="trainingFrame">
     <property name="enabled">
@@ -61,7 +60,7 @@
      <rect>
       <x>0</x>
       <y>0</y>
-      <width>671</width>
+      <width>681</width>
       <height>421</height>
      </rect>
     </property>
@@ -97,25 +96,6 @@
       </property>
       <property name="text">
        <string>Open Audio File</string>
-      </property>
-     </widget>
-     <widget class="QLabel" name="audioFilenameLbl">
-      <property name="geometry">
-       <rect>
-        <x>110</x>
-        <y>30</y>
-        <width>151</width>
-        <height>16</height>
-       </rect>
-      </property>
-      <property name="font">
-       <font>
-        <weight>50</weight>
-        <bold>false</bold>
-       </font>
-      </property>
-      <property name="text">
-       <string>Audio name</string>
       </property>
      </widget>
      <widget class="QLineEdit" name="audioClassInput">
@@ -157,19 +137,19 @@
      <widget class="QTableWidget" name="featuresTbl">
       <property name="geometry">
        <rect>
-        <x>260</x>
-        <y>70</y>
-        <width>381</width>
-        <height>101</height>
+        <x>220</x>
+        <y>80</y>
+        <width>421</width>
+        <height>91</height>
        </rect>
       </property>
      </widget>
      <widget class="QLabel" name="featureExtLbl">
       <property name="geometry">
        <rect>
-        <x>260</x>
-        <y>50</y>
-        <width>81</width>
+        <x>390</x>
+        <y>60</y>
+        <width>51</width>
         <height>16</height>
        </rect>
       </property>
@@ -180,40 +160,40 @@
      <widget class="Phonon::SeekSlider" name="seekSlider">
       <property name="geometry">
        <rect>
-        <x>10</x>
-        <y>90</y>
-        <width>171</width>
-        <height>22</height>
+        <x>120</x>
+        <y>20</y>
+        <width>161</width>
+        <height>16</height>
        </rect>
       </property>
      </widget>
      <widget class="QLCDNumber" name="lcdNumber">
       <property name="geometry">
        <rect>
-        <x>190</x>
-        <y>90</y>
+        <x>290</x>
+        <y>20</y>
         <width>64</width>
-        <height>23</height>
+        <height>21</height>
        </rect>
       </property>
      </widget>
      <widget class="Phonon::VolumeSlider" name="volumeSlider">
       <property name="geometry">
        <rect>
-        <x>140</x>
-        <y>140</y>
+        <x>240</x>
+        <y>50</y>
         <width>109</width>
-        <height>22</height>
+        <height>16</height>
        </rect>
       </property>
      </widget>
      <widget class="QPushButton" name="audioPlayBtn">
       <property name="geometry">
        <rect>
-        <x>10</x>
-        <y>130</y>
+        <x>120</x>
+        <y>40</y>
         <width>41</width>
-        <height>41</height>
+        <height>31</height>
        </rect>
       </property>
       <property name="text">
@@ -236,10 +216,10 @@
      <widget class="QPushButton" name="audioPauseBtn">
       <property name="geometry">
        <rect>
-        <x>50</x>
-        <y>130</y>
+        <x>160</x>
+        <y>40</y>
         <width>41</width>
-        <height>41</height>
+        <height>31</height>
        </rect>
       </property>
       <property name="text">
@@ -259,10 +239,10 @@
      <widget class="QPushButton" name="audioStopBtn">
       <property name="geometry">
        <rect>
-        <x>90</x>
-        <y>130</y>
+        <x>200</x>
+        <y>40</y>
         <width>41</width>
-        <height>41</height>
+        <height>31</height>
        </rect>
       </property>
       <property name="text">
@@ -272,6 +252,133 @@
        <iconset resource="image_set.qrc">
         <normaloff>:/icons/1461587394_black_4_audio_stop.png</normaloff>:/icons/1461587394_black_4_audio_stop.png</iconset>
       </property>
+     </widget>
+     <widget class="QGroupBox" name="metaGroup">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>80</y>
+        <width>201</width>
+        <height>91</height>
+       </rect>
+      </property>
+      <property name="title">
+       <string>Meta Info</string>
+      </property>
+      <widget class="QLabel" name="fileLbl">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>20</y>
+         <width>31</width>
+         <height>16</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <weight>50</weight>
+         <bold>false</bold>
+        </font>
+       </property>
+       <property name="text">
+        <string>File  </string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="samplesLbl">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>40</y>
+         <width>51</width>
+         <height>16</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <weight>50</weight>
+         <bold>false</bold>
+        </font>
+       </property>
+       <property name="text">
+        <string>Samples </string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="fsLbl">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>60</y>
+         <width>21</width>
+         <height>16</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <weight>50</weight>
+         <bold>false</bold>
+        </font>
+       </property>
+       <property name="text">
+        <string>FS </string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="audioFilenameLbl">
+       <property name="geometry">
+        <rect>
+         <x>60</x>
+         <y>20</y>
+         <width>131</width>
+         <height>16</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <weight>50</weight>
+         <bold>false</bold>
+        </font>
+       </property>
+       <property name="text">
+        <string>:</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="sampleValLbl">
+       <property name="geometry">
+        <rect>
+         <x>60</x>
+         <y>40</y>
+         <width>131</width>
+         <height>16</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <weight>50</weight>
+         <bold>false</bold>
+        </font>
+       </property>
+       <property name="text">
+        <string>:</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="fsValLbl">
+       <property name="geometry">
+        <rect>
+         <x>60</x>
+         <y>60</y>
+         <width>131</width>
+         <height>16</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <weight>50</weight>
+         <bold>false</bold>
+        </font>
+       </property>
+       <property name="text">
+        <string>:</string>
+       </property>
+      </widget>
      </widget>
     </widget>
     <widget class="QGroupBox" name="trainDataGroup">
@@ -299,7 +406,7 @@
      <widget class="QLabel" name="newWeightLbl">
       <property name="geometry">
        <rect>
-        <x>570</x>
+        <x>580</x>
         <y>10</y>
         <width>71</width>
         <height>20</height>
@@ -383,7 +490,7 @@
      <normaloff>:/icons/data-accept-database-icon.png</normaloff>:/icons/data-accept-database-icon.png</iconset>
    </property>
    <property name="text">
-    <string>Test Data</string>
+    <string>Testing Data</string>
    </property>
   </action>
   <action name="actionExit">
