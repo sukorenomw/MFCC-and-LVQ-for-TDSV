@@ -22,9 +22,6 @@ class AudioPlayer():
         self.audioStopBtn = audioStopBtn
         self.init_audio_player()
 
-    def set_audio_source(self, audiofile):
-        self.mediaObject.setCurrentSource(Phonon.MediaSource(audiofile))
-
     def init_audio_player(self):
         self.audioOutput = Phonon.AudioOutput(Phonon.MusicCategory)
         self.mediaObject = Phonon.MediaObject()
@@ -42,6 +39,12 @@ class AudioPlayer():
                                         QtGui.QSizePolicy.Maximum)
 
         self.seekSlider.setMediaObject(self.mediaObject)
+
+    def set_audio_source(self, audiofile):
+        self.audioPlayBtn.clicked.connect(self.mediaObject.play)
+        self.audioPauseBtn.clicked.connect(self.mediaObject.pause)
+        self.audioStopBtn.clicked.connect(self.mediaObject.stop)
+        self.mediaObject.setCurrentSource(Phonon.MediaSource(audiofile))
 
     def tick(self, time):
         displayTime = QtCore.QTime(0, (time / 60000) % 60, (time / 1000) % 60)

@@ -9,4 +9,8 @@ class FileReader():
         [signal, fs, codec] = audiolab.wavread(audio)
         return [signal, fs]
 
+    @staticmethod
+    def add_temp(file):
+        return file[0:len(file)-4]+"-silenced.wav"
+
 

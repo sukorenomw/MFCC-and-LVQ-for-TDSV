@@ -1,13 +1,14 @@
 # coding=utf-8
 import view.trainingWindow as trainingWindow
 import audioPlayer
-import filereader
 import testingWindowController as twc
+from mfcc import MFCC
 
+from filereader import FileReader
 from PyQt4 import QtCore, QtGui
 
 
-class MainWindow(QtGui.QMainWindow, trainingWindow.Ui_MainWdw, filereader.FileReader):
+class MainWindow(QtGui.QMainWindow, trainingWindow.Ui_MainWdw):
     def __init__(self):
         super(self.__class__, self).__init__()
         self.setupUi(self)
@@ -17,6 +18,7 @@ class MainWindow(QtGui.QMainWindow, trainingWindow.Ui_MainWdw, filereader.FileRe
                                               self.audioPlayBtn,
                                               self.audioPauseBtn,
                                               self.audioStopBtn)
+        self.mfcc = MFCC()
         self.init_ui()
         self.actionExit.triggered.connect(self.close)
         self.actionTraining_Data.setDisabled(True)
@@ -26,6 +28,7 @@ class MainWindow(QtGui.QMainWindow, trainingWindow.Ui_MainWdw, filereader.FileRe
         self.actionAbout.triggered.connect(self.about)
 
         self.openAudioBtn.clicked.connect(self.show_open_dialog)
+        self.extractSaveBtn.clicked.connect(self.extract_and_save)
 
     def open_test_wdw(self):
         self.hide()
@@ -43,19 +46,22 @@ class MainWindow(QtGui.QMainWindow, trainingWindow.Ui_MainWdw, filereader.FileRe
                                                            '',
                                                            "Audio Files (*.wav)",
                                                            None, QtGui.QFileDialog.DontUseNativeDialog)
-        fileName = str(self.audioFile)
+        if self.audioFile != "":
+            fileName = str(self.audioFile)
+            self.audio_signal, self.audio_fs = FileReader.read_audio(fileName)
+            self.silenced_signal, self.audio_fs = self.mfcc.remove_silence(fileName)
 
-        self.audio_signal, self.audio_fs = self.read_audio(fileName)
+            self.fsValLbl.setText(": " + str(self.audio_fs) + " Hz")
+            self.sampleValLbl.setText(": " + str(len(self.audio_signal)) + " | "+str(len(self.silenced_signal))+" (silenced)")
+            self.audioFilenameLbl.setText(": " + fileName[fileName.rfind('/') + 1:len(fileName)])
 
-        self.fsValLbl.setText(": "+str(self.audio_fs)+" Hz")
-        self.sampleValLbl.setText(": "+str(len(self.audio_signal)))
-        self.audioFilenameLbl.setText(": "+fileName[fileName.rfind('/') + 1:len(fileName)])
-        self.audioPlayBtn.setDisabled(False)
-        self.audioPlayBtn.clicked.connect(self.player.mediaObject.play)
-        self.audioPauseBtn.clicked.connect(self.player.mediaObject.pause)
-        self.audioStopBtn.clicked.connect(self.player.mediaObject.stop)
-        self.extractSaveBtn.setDisabled(False)
-        self.player.set_audio_source(self.audioFile)
+            self.audioPlayBtn.setDisabled(False)
+
+            self.extractSaveBtn.setDisabled(False)
+            self.player.set_audio_source(self.audioFile)
+
+    def extract_and_save(self):
+        self.num_frames, self.framed_signal = self.mfcc.frame_blocking(self.silenced_signal)
 
     def init_ui(self):
         palette = QtGui.QPalette()
