@@ -53,6 +53,7 @@ class TestingWindow(QtGui.QMainWindow, testingWindow.Ui_TestWdw ):
         self.lcdNumber.setPalette(palette)
 
     def extract_features(self):
+        # frame blocking
         self.num_frames, self.framed_signal = self.mfcc.frame_blocking(self.silenced_signal)
 
         fig = Figure()
@@ -60,9 +61,18 @@ class TestingWindow(QtGui.QMainWindow, testingWindow.Ui_TestWdw ):
         self.framedSignalPlot.plot(self.framed_signal.flatten(1))
         self.add_figure(fig, self.framedPlotLyt)
 
+        # windowing
+        self.windowed_signal = self.mfcc.hamm_window(self.mfcc.frame_size, self.framed_signal, self.num_frames)
+
+        fig = Figure()
+        self.windowedSignalPlot = fig.add_subplot(111)
+        self.windowedSignalPlot.plot(self.windowed_signal.flatten(1))
+        self.add_figure(fig, self.windowedPlotLyt)
+
     def add_figure(self, fig, container):
-        if self.canvas is not None:
-            container.removeWidget(self.canvas)
+        # if self.canvas is not None:
+        #     container.removeWidget(self.canvas)
+        self.clearLayout(container)
         self.canvas = FigureCanvas(fig)
         container.addWidget(self.canvas)
         self.canvas.draw()
@@ -90,6 +100,8 @@ class TestingWindow(QtGui.QMainWindow, testingWindow.Ui_TestWdw ):
 
             self.audioPlayBtn.setDisabled(False)
 
+            self.clear_all_layout()
+
             fig = Figure()
             self.origSignalPlot = fig.add_subplot(111)
             self.origSignalPlot.plot(self.audio_signal)
@@ -103,6 +115,17 @@ class TestingWindow(QtGui.QMainWindow, testingWindow.Ui_TestWdw ):
                                       "Text Dependent Speaker Verification - the "
                                       "Final project software to identify and verify Speaker based on their speech.\n\n"
                                       "\xa9 Sukoreno Mukti - 1112051 \n Informatics Engineering Dept. ITHB")
+
+    def clear_all_layout(self):
+        [self.clearLayout(layout) for layout in [self.fftPloyLyt, self.framedPlotLyt, self.melPlotLyt, self.mfccPlotLyt, self.originalPlotLyt, self.windowedPlotLyt]]
+
+    def clearLayout(self,layout):
+        while layout.count():
+            child = layout.takeAt(0)
+            if child.widget() is not None:
+                child.widget().deleteLater()
+            elif child.layout() is not None:
+                clearLayout(child.layout())
 
     def closeEvent(self, event):
         reply = QtGui.QMessageBox.question(self, 'Message',

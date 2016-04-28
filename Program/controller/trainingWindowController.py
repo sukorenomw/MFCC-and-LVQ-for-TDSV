@@ -62,6 +62,7 @@ class MainWindow(QtGui.QMainWindow, trainingWindow.Ui_MainWdw):
 
     def extract_and_save(self):
         self.num_frames, self.framed_signal = self.mfcc.frame_blocking(self.silenced_signal)
+        self.windowed_signal = self.mfcc.hamm_window(self.mfcc.frame_size, self.framed_signal, self.num_frames)
 
     def init_ui(self):
         palette = QtGui.QPalette()

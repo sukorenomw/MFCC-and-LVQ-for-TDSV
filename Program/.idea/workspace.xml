@@ -2,13 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="4984340f-e880-4a5a-9ef6-683750ab9539" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/view/ui_files/TestWindow.ui" afterPath="$PROJECT_DIR$/view/ui_files/TestWindow.ui" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Data/mfcc1.m" afterPath="$PROJECT_DIR$/../Data/mfcc1.m" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/controller/filereader.py" afterPath="$PROJECT_DIR$/controller/filereader.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/controller/mfcc.py" afterPath="$PROJECT_DIR$/controller/mfcc.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/controller/testingWindowController.py" afterPath="$PROJECT_DIR$/controller/testingWindowController.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/controller/trainingWindowController.py" afterPath="$PROJECT_DIR$/controller/trainingWindowController.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/view/testingWindow.py" afterPath="$PROJECT_DIR$/view/testingWindow.py" />
     </list>
     <ignored path="Program.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -32,8 +29,8 @@
       <file leaf-file-name="mfcc.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/controller/mfcc.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="157">
-              <caret line="19" column="17" selection-start-line="19" selection-start-column="17" selection-end-line="19" selection-end-column="17" />
+            <state relative-caret-position="353">
+              <caret line="47" column="23" selection-start-line="47" selection-start-column="23" selection-end-line="47" selection-end-column="23" />
               <folding>
                 <element signature="e#0#9#0" expanded="true" />
               </folding>
@@ -56,8 +53,8 @@
       <file leaf-file-name="trainingWindowController.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/controller/trainingWindowController.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="204">
-              <caret line="63" column="92" selection-start-line="63" selection-start-column="8" selection-end-line="63" selection-end-column="92" />
+            <state relative-caret-position="119">
+              <caret line="64" column="111" selection-start-line="64" selection-start-column="7" selection-end-line="64" selection-end-column="111" />
               <folding>
                 <element signature="e#15#59#0" expanded="true" />
               </folding>
@@ -68,8 +65,8 @@
       <file leaf-file-name="testingWindowController.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/controller/testingWindowController.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="226">
-              <caret line="59" column="63" selection-start-line="59" selection-start-column="63" selection-end-line="59" selection-end-column="63" />
+            <state relative-caret-position="204">
+              <caret line="102" column="35" selection-start-line="102" selection-start-column="35" selection-end-line="102" selection-end-column="35" />
               <folding>
                 <element signature="e#15#57#0" expanded="true" />
               </folding>
@@ -122,8 +119,8 @@
         <option value="$PROJECT_DIR$/Main.py" />
         <option value="$PROJECT_DIR$/controller/audioPlayer.py" />
         <option value="$PROJECT_DIR$/controller/filereader.py" />
-        <option value="$PROJECT_DIR$/controller/mfcc.py" />
         <option value="$PROJECT_DIR$/controller/trainingWindowController.py" />
+        <option value="$PROJECT_DIR$/controller/mfcc.py" />
         <option value="$PROJECT_DIR$/controller/testingWindowController.py" />
       </list>
     </option>
@@ -501,7 +498,7 @@
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.310559" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.310559" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32919255" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
@@ -755,26 +752,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/controller/filereader.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="289">
-          <caret line="17" column="0" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#10#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/controller/mfcc.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="157">
-          <caret line="19" column="17" selection-start-line="19" selection-start-column="17" selection-end-line="19" selection-end-column="17" />
-          <folding>
-            <element signature="e#0#9#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/view/testingWindow.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="855">
@@ -785,10 +762,30 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/controller/mfcc.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="353">
+          <caret line="47" column="23" selection-start-line="47" selection-start-column="23" selection-end-line="47" selection-end-column="23" />
+          <folding>
+            <element signature="e#0#9#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/controller/filereader.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="289">
+          <caret line="17" column="0" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#10#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/controller/trainingWindowController.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="63" column="92" selection-start-line="63" selection-start-column="8" selection-end-line="63" selection-end-column="92" />
+        <state relative-caret-position="119">
+          <caret line="64" column="111" selection-start-line="64" selection-start-column="7" selection-end-line="64" selection-end-column="111" />
           <folding>
             <element signature="e#15#59#0" expanded="true" />
           </folding>
@@ -797,8 +794,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/controller/testingWindowController.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="226">
-          <caret line="59" column="63" selection-start-line="59" selection-start-column="63" selection-end-line="59" selection-end-column="63" />
+        <state relative-caret-position="204">
+          <caret line="102" column="35" selection-start-line="102" selection-start-column="35" selection-end-line="102" selection-end-column="35" />
           <folding>
             <element signature="e#15#57#0" expanded="true" />
           </folding>

@@ -38,3 +38,20 @@ class MFCC():
         print "Frames[last]: " + str(frames[num_frame-1,self.frame_size-1]) if DEBUG else ''
 
         return [num_frame, frames]
+
+    def hamm_window(self, frame_size, framed_signal, num_frame):
+        hamm = self.hamm(frame_size)
+        windowed = np.zeros((num_frame, frame_size))
+        for i in xrange(num_frame):
+            windowed[i,:] = framed_signal[i,:] * hamm
+
+        return windowed
+
+
+    def hamm(self,N):
+        if N < 1:
+            return np.array([])
+        if N == 1:
+            return np.ones(1, float)
+        n = np.arange(0, N)
+        return 0.54 - 0.46 * np.cos(2.0 * np.pi * n / (N - 1))
