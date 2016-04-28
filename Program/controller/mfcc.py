@@ -32,6 +32,9 @@ class MFCC():
             frames[i,:] = audio_signal[i*self.overlap:i*self.overlap+self.frame_size]
 
         print "Jumlah Frame: "+str(num_frame) if DEBUG else ''
-        print "Frames[0,0]: " + str(frames[0,0]) if DEBUG else ''
+        print "signal(0): " + str(audio_signal[0]) if DEBUG else ''
+        print "signal(last): " + str(audio_signal[len(audio_signal)-1]) if DEBUG else ''
+        print "Frames[first]: " + str(frames[0, 0]) if DEBUG else ''
+        print "Frames[last]: " + str(frames[num_frame-1,self.frame_size-1]) if DEBUG else ''
 
         return [num_frame, frames]

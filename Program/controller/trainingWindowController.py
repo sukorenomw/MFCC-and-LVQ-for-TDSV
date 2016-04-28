@@ -2,8 +2,8 @@
 import view.trainingWindow as trainingWindow
 import audioPlayer
 import testingWindowController as twc
-from mfcc import MFCC
 
+from mfcc import MFCC
 from filereader import FileReader
 from PyQt4 import QtCore, QtGui
 

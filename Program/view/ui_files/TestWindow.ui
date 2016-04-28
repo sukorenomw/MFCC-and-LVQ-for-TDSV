@@ -395,31 +395,133 @@
        <attribute name="title">
         <string>Original Signal</string>
        </attribute>
+       <widget class="QWidget" name="originalPlot" native="true">
+        <property name="geometry">
+         <rect>
+          <x>0</x>
+          <y>0</y>
+          <width>481</width>
+          <height>251</height>
+         </rect>
+        </property>
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <layout class="QVBoxLayout" name="originalPlotLyt"/>
+       </widget>
       </widget>
       <widget class="QWidget" name="framedSgnlTab">
        <attribute name="title">
-        <string>Frame Signal</string>
+        <string>Framed Signal</string>
        </attribute>
+       <widget class="QWidget" name="framedPlot" native="true">
+        <property name="geometry">
+         <rect>
+          <x>0</x>
+          <y>0</y>
+          <width>481</width>
+          <height>251</height>
+         </rect>
+        </property>
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <layout class="QVBoxLayout" name="framedPlotLyt"/>
+       </widget>
       </widget>
       <widget class="QWidget" name="wdwSignalTab">
        <attribute name="title">
         <string>Windowed Signal</string>
        </attribute>
+       <widget class="QWidget" name="framedPlot_2" native="true">
+        <property name="geometry">
+         <rect>
+          <x>0</x>
+          <y>0</y>
+          <width>481</width>
+          <height>251</height>
+         </rect>
+        </property>
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <layout class="QVBoxLayout" name="windowedPlotLyt"/>
+       </widget>
       </widget>
       <widget class="QWidget" name="fftTab">
        <attribute name="title">
         <string>FFT</string>
        </attribute>
+       <widget class="QWidget" name="framedPlot_3" native="true">
+        <property name="geometry">
+         <rect>
+          <x>10</x>
+          <y>0</y>
+          <width>481</width>
+          <height>251</height>
+         </rect>
+        </property>
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <layout class="QVBoxLayout" name="fftPloyLyt"/>
+       </widget>
       </widget>
       <widget class="QWidget" name="melWrapTab">
        <attribute name="title">
         <string>Mel Wrapping</string>
        </attribute>
+       <widget class="QWidget" name="framedPlot_4" native="true">
+        <property name="geometry">
+         <rect>
+          <x>0</x>
+          <y>0</y>
+          <width>481</width>
+          <height>251</height>
+         </rect>
+        </property>
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <layout class="QVBoxLayout" name="melPlotLyt"/>
+       </widget>
       </widget>
       <widget class="QWidget" name="mfccTab">
        <attribute name="title">
         <string>MFCC</string>
        </attribute>
+       <widget class="QWidget" name="framedPlot_5" native="true">
+        <property name="geometry">
+         <rect>
+          <x>0</x>
+          <y>0</y>
+          <width>481</width>
+          <height>251</height>
+         </rect>
+        </property>
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <layout class="QVBoxLayout" name="mfccPlotLyt"/>
+       </widget>
       </widget>
      </widget>
      <widget class="QGroupBox" name="paramsGroup">
@@ -700,25 +802,6 @@ Verify</string>
        <set>Qt::AlignCenter</set>
       </property>
      </widget>
-     <zorder>sampleValLbl</zorder>
-     <zorder>samplesLbl</zorder>
-     <zorder>audioFilenameLbl</zorder>
-     <zorder>fileLbl</zorder>
-     <zorder>testDataTab</zorder>
-     <zorder>paramsGroup</zorder>
-     <zorder>testProgress</zorder>
-     <zorder>identifyBtn</zorder>
-     <zorder>wordVal</zorder>
-     <zorder>wordLbl</zorder>
-     <zorder>speakerVal</zorder>
-     <zorder>speakerLbl</zorder>
-     <zorder>testProgress</zorder>
-     <zorder>identifyBtn</zorder>
-     <zorder>wordVal</zorder>
-     <zorder>wordLbl</zorder>
-     <zorder>speakerVal</zorder>
-     <zorder>speakerLbl</zorder>
-     <zorder>resultLbl</zorder>
     </widget>
    </widget>
   </widget>
