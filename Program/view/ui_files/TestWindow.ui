@@ -380,7 +380,7 @@
        </rect>
       </property>
       <property name="currentIndex">
-       <number>0</number>
+       <number>3</number>
       </property>
       <widget class="QWidget" name="origSignalTab">
        <property name="enabled">
@@ -464,7 +464,7 @@
        <widget class="QWidget" name="framedPlot_3" native="true">
         <property name="geometry">
          <rect>
-          <x>10</x>
+          <x>0</x>
           <y>0</y>
           <width>481</width>
           <height>251</height>

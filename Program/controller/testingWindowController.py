@@ -2,6 +2,7 @@
 import view.testingWindow as testingWindow
 import audioPlayer
 import trainingWindowController as twc
+import numpy as np
 
 import matplotlib
 matplotlib.rc('xtick', labelsize=7)
@@ -58,16 +59,25 @@ class TestingWindow(QtGui.QMainWindow, testingWindow.Ui_TestWdw ):
 
         fig = Figure()
         self.framedSignalPlot = fig.add_subplot(111)
-        self.framedSignalPlot.plot(self.framed_signal.flatten(1))
+        self.framedSignalPlot.plot(self.framed_signal.ravel(1))
         self.add_figure(fig, self.framedPlotLyt)
 
         # windowing
-        self.windowed_signal = self.mfcc.hamm_window(self.mfcc.frame_size, self.framed_signal, self.num_frames)
+        self.windowed_signal = self.mfcc.hamm_window(self.framed_signal)
 
         fig = Figure()
         self.windowedSignalPlot = fig.add_subplot(111)
-        self.windowedSignalPlot.plot(self.windowed_signal.flatten(1))
+        self.windowedSignalPlot.plot(self.windowed_signal.ravel(1))
         self.add_figure(fig, self.windowedPlotLyt)
+
+        #hitung FFT
+        self.fft_signal = self.mfcc.calc_fft(self.windowed_signal)
+
+        fig = Figure()
+        self.fftSignalPlot = fig.add_subplot(111)
+        self.fftSignalPlot.plot(self.fft_signal[:,:128].ravel(1))
+        self.add_figure(fig, self.fftPloyLyt)
+
 
     def add_figure(self, fig, container):
         # if self.canvas is not None:
@@ -125,7 +135,7 @@ class TestingWindow(QtGui.QMainWindow, testingWindow.Ui_TestWdw ):
             if child.widget() is not None:
                 child.widget().deleteLater()
             elif child.layout() is not None:
-                clearLayout(child.layout())
+                self.clearLayout(child.layout())
 
     def closeEvent(self, event):
         reply = QtGui.QMessageBox.question(self, 'Message',

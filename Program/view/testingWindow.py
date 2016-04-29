@@ -198,7 +198,7 @@ class Ui_TestWdw(object):
         self.fftTab = QtGui.QWidget()
         self.fftTab.setObjectName(_fromUtf8("fftTab"))
         self.framedPlot_3 = QtGui.QWidget(self.fftTab)
-        self.framedPlot_3.setGeometry(QtCore.QRect(10, 0, 481, 251))
+        self.framedPlot_3.setGeometry(QtCore.QRect(0, 0, 481, 251))
         sizePolicy = QtGui.QSizePolicy(QtGui.QSizePolicy.Preferred, QtGui.QSizePolicy.Preferred)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
@@ -366,7 +366,7 @@ class Ui_TestWdw(object):
         self.menubar.addAction(self.menuAbout.menuAction())
 
         self.retranslateUi(TestWdw)
-        self.testDataTab.setCurrentIndex(0)
+        self.testDataTab.setCurrentIndex(3)
         QtCore.QMetaObject.connectSlotsByName(TestWdw)
 
     def retranslateUi(self, TestWdw):

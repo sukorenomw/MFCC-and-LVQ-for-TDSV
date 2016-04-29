@@ -1,6 +1,7 @@
 import os
 import math
 import numpy as np
+import cmath
 
 from filereader import FileReader
 from subprocess import call
@@ -39,14 +40,46 @@ class MFCC():
 
         return [num_frame, frames]
 
-    def hamm_window(self, frame_size, framed_signal, num_frame):
-        hamm = self.hamm(frame_size)
-        windowed = np.zeros((num_frame, frame_size))
-        for i in xrange(num_frame):
+    def hamm_window(self, framed_signal):
+        hamm = self.hamm(self.frame_size)
+        windowed = np.zeros((len(framed_signal), self.frame_size))
+        for i in xrange(len(framed_signal)):
             windowed[i,:] = framed_signal[i,:] * hamm
 
         return windowed
 
+    def calc_fft(self, signal):
+        fft_signal = np.zeros((signal.shape[0], signal.shape[1]))
+        for i in xrange(len(signal)):
+            fft_signal[i, :] = np.abs(self.FFT(signal[i, :]))
+
+        return fft_signal
+
+    def DFT(self, x):
+        x = np.asarray(x, dtype=float)
+        N = x.shape[0]
+        n = np.arange(N)  # ambil index input sampel 0,1..N-1
+        k = n.reshape((N, 1))  # ambil index output sampel 0,1..N-1 dalam bentuk ke bawah, reshape = atur ulang array
+        M = np.exp(-2j * np.pi * k * n / N)  # hitung exponensial bilangan complex
+        return np.dot(M, x)
+
+    def FFT(self, signal):
+        signal = np.asarray(signal, dtype=float)
+        N = signal.shape[0]
+
+        # print "nilai x FFT: " + str(x) if DEBUG else ''
+        # print "nilai N FFT: " + str(N) if DEBUG else ''
+
+        if np.log2(N) % 1 > 0:
+            raise ValueError("input harus power of 2")
+        elif N <= 32: #kondisi berhenti rekursif
+            return self.DFT(signal)
+        else:
+            X_even = self.FFT(signal[::2]) # ambil yang genap
+            X_odd = self.FFT(signal[1::2]) # ambil yang ganjil
+            factor = np.exp(-2j * np.pi * np.arange(N) / N)
+            return np.concatenate([X_even + factor[:N / 2] * X_odd,
+                                   X_even - factor[N / 2:] * X_odd])
 
     def hamm(self,N):
         if N < 1:
