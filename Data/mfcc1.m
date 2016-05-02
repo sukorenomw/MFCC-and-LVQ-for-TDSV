@@ -13,8 +13,8 @@ http://dsp.stackexchange.com/questions/26083/verifying-mfcc-final-result
 close all;
 #{Step 0: Reading the File & initializing the Time and Freq.
 #}
-    [x,fs,nbits]=wavread('Reno\buka1.wav');
-    x=x(x <= -0.00021 | x >= 0.00021);
+    [x,fs,nbits]=wavread('buka-silenced.wav');
+    #x=x(x <= -0.00021 | x >= 0.00021);
     ts=1/fs;
     N=length(x);
     Tmax=(N-1)*ts;

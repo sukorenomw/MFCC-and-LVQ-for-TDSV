@@ -78,6 +78,16 @@ class TestingWindow(QtGui.QMainWindow, testingWindow.Ui_TestWdw ):
         self.fftSignalPlot.plot(self.fft_signal[:,:128].ravel(1))
         self.add_figure(fig, self.fftPloyLyt)
 
+        #hitung filter bank
+        self.fbank = self.mfcc.fbank(self.audio_fs)
+
+        fig = Figure()
+        self.melwrapPlot = fig.add_subplot(111)
+        for i in xrange(self.mfcc.num_filter):
+            self.melwrapPlot.plot(self.fbank[i,:])
+
+        self.add_figure(fig, self.melPlotLyt)
+
 
     def add_figure(self, fig, container):
         # if self.canvas is not None:
