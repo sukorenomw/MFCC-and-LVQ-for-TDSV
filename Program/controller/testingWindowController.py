@@ -5,6 +5,7 @@ import trainingWindowController as twc
 import numpy as np
 
 import matplotlib
+
 matplotlib.rc('xtick', labelsize=7)
 matplotlib.rc('ytick', labelsize=7)
 
@@ -17,7 +18,7 @@ from filereader import FileReader
 from PyQt4 import QtCore, QtGui
 
 
-class TestingWindow(QtGui.QMainWindow, testingWindow.Ui_TestWdw ):
+class TestingWindow(QtGui.QMainWindow, testingWindow.Ui_TestWdw):
     def __init__(self):
         super(self.__class__, self).__init__()
         self.setupUi(self)
@@ -70,24 +71,36 @@ class TestingWindow(QtGui.QMainWindow, testingWindow.Ui_TestWdw ):
         self.windowedSignalPlot.plot(self.windowed_signal.ravel(1))
         self.add_figure(fig, self.windowedPlotLyt)
 
-        #hitung FFT
+        # hitung FFT
         self.fft_signal = self.mfcc.calc_fft(self.windowed_signal)
 
         fig = Figure()
         self.fftSignalPlot = fig.add_subplot(111)
-        self.fftSignalPlot.plot(self.fft_signal[:,:128].ravel(1))
+        self.fftSignalPlot.plot(self.fft_signal[:, :128].ravel(1))
         self.add_figure(fig, self.fftPloyLyt)
 
-        #hitung filter bank
-        self.fbank = self.mfcc.fbank(self.audio_fs)
+        # hitung filter bank
+        self.log_energy, self.fbank = self.mfcc.fbank(self.fft_signal, self.audio_fs)
 
         fig = Figure()
         self.melwrapPlot = fig.add_subplot(111)
         for i in xrange(self.mfcc.num_filter):
-            self.melwrapPlot.plot(self.fbank[i,:])
+            self.melwrapPlot.plot(self.fbank[i, :])
 
         self.add_figure(fig, self.melPlotLyt)
 
+        # features
+        self.features = self.mfcc.features(self.log_energy)
+
+        fig = Figure()
+        self.mfccPlot = fig.add_subplot(111)
+        for i in xrange(self.features.shape[0]):
+            self.mfccPlot.plot(self.features[i, :])
+
+        self.add_figure(fig, self.mfccPlotLyt)
+
+        # write features to table
+        self.testDataTab.setCurrentIndex(len(self.testDataTab)-1)
 
     def add_figure(self, fig, container):
         # if self.canvas is not None:
@@ -137,9 +150,11 @@ class TestingWindow(QtGui.QMainWindow, testingWindow.Ui_TestWdw ):
                                       "\xa9 Sukoreno Mukti - 1112051 \n Informatics Engineering Dept. ITHB")
 
     def clear_all_layout(self):
-        [self.clearLayout(layout) for layout in [self.fftPloyLyt, self.framedPlotLyt, self.melPlotLyt, self.mfccPlotLyt, self.originalPlotLyt, self.windowedPlotLyt]]
+        [self.clearLayout(layout) for layout in
+         [self.fftPloyLyt, self.framedPlotLyt, self.melPlotLyt, self.mfccPlotLyt, self.originalPlotLyt,
+          self.windowedPlotLyt]]
 
-    def clearLayout(self,layout):
+    def clearLayout(self, layout):
         while layout.count():
             child = layout.takeAt(0)
             if child.widget() is not None:

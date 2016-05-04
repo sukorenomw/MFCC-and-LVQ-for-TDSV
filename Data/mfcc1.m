@@ -82,17 +82,17 @@ With a total of 22 points we can create 20 filters.
     %Creating the filters
     for m =2:length(mel)-1
         for k=1:frameSize/2
-     if k<fres(m-1)
-        H(m-1,k) = 0;
-    elseif (k>=fres(m-1)&&k<=fres(m))
-        H(m-1,k)= (k-fres(m-1))/(fres(m)-fres(m-1));
-    elseif (k>=fres(m)&&k<=fres(m+1))
-       H(m-1,k)= (fres(m+1)-k)/(fres(m+1)-fres(m));
-    elseif k>fres(m+1)
-        H(m-1,k) = 0;    
-    endif
+          if k<fres(m-1)
+              H(m-1,k) = 0;
+          elseif (k>=fres(m-1)&&k<=fres(m))
+              H(m-1,k)= (k-fres(m-1))/(fres(m)-fres(m-1));
+          elseif (k>=fres(m)&&k<=fres(m+1))
+             H(m-1,k)= (fres(m+1)-k)/(fres(m+1)-fres(m));
+          elseif k>fres(m+1)
+              H(m-1,k) = 0;    
+          endif
         end
-        end
+    end
     %H contains the 20 filterbanks, we now apply it to the
     %processed signal.
     for i=1:NumFrames

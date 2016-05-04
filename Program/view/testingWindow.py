@@ -366,7 +366,7 @@ class Ui_TestWdw(object):
         self.menubar.addAction(self.menuAbout.menuAction())
 
         self.retranslateUi(TestWdw)
-        self.testDataTab.setCurrentIndex(3)
+        self.testDataTab.setCurrentIndex(0)
         QtCore.QMetaObject.connectSlotsByName(TestWdw)
 
     def retranslateUi(self, TestWdw):

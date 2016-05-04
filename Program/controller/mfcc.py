@@ -4,6 +4,7 @@ import numpy as np
 
 from filereader import FileReader
 from subprocess import call
+from scipy.fftpack import dct
 
 DEBUG=True
 
@@ -108,15 +109,39 @@ class MFCC():
     def calc_fft_bin(self,melinhz, fs):
         return np.floor((self.frame_size+1)*melinhz/fs)
 
-    def fbank(self,fs):
+    def fbank(self, fft, fs):
+
         mel = self.mel(fs)
         melinhz = self.melinhz(mel)
         fft_bin = self.calc_fft_bin(melinhz, fs)
 
-        fbank = np.zeros([self.num_filter, self.frame_size / 2 +1])
-        for j in xrange(0, self.num_filter):
-            for i in xrange(int(fft_bin[j]), int(fft_bin[j + 1])):
-                fbank[j, i] = (i - fft_bin[j]) / (fft_bin[j + 1] - fft_bin[j])
-            for i in xrange(int(fft_bin[j + 1]), int(fft_bin[j + 2])):
-                fbank[j, i] = (fft_bin[j + 2] - i) / (fft_bin[j + 2] - fft_bin[j + 1])
-        return fbank
+        fbank = np.zeros([self.num_filter, self.frame_size / 2])
+
+        for m in xrange(1,self.num_filter+1):
+            for k in xrange(self.frame_size / 2):
+                if fft_bin[m - 1] <= k <= fft_bin[m]:
+                    fbank[m-1, k-1] = (k - fft_bin[m - 1]) / (fft_bin[m] - fft_bin[m - 1])
+                elif fft_bin[m] <= k <= fft_bin[m + 1]:
+                    fbank[m-1, k-1] = (fft_bin[m + 1] - k) / (fft_bin[m + 1] - fft_bin[m])
+
+        return np.log(np.dot(fft[:,:128],fbank.T)), fbank
+
+    def features(self, energy):
+        return dct(energy, type=2, axis=1, norm='ortho')
+
+    def calc_dct(self, energy):
+        result = np.zeros([energy.shape[0], self.num_filter], dtype=float)
+        for i in xrange(energy.shape[0]):
+            result[i,:] = self.dct(energy[i,:])
+
+        return result
+
+    def dct(self, energy):
+        N = len(energy)
+        X = np.zeros(N, dtype=float)
+        for k in range(N):
+            out = np.sqrt(.5) * energy[0]
+            for n in range(1, N):
+                out += energy[n] * np.cos(np.pi * n * (k + .5) / N)
+            X[k] = out * np.sqrt(2. / N)
+        return X
