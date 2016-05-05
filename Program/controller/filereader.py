@@ -14,4 +14,7 @@ class FileReader():
         return file[0:len(file)-4]+"-silenced.wav"
         # return file
 
+    @staticmethod
+    def get_output_class(file):
+        return file[file[:file.rfind('/')].rfind('/')+1:file.rfind('/')]+"-"+file[file.rfind('/') + 1:len(file)-5].capitalize()
 

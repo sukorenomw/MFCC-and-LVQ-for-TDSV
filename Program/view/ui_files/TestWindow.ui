@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>689</width>
-    <height>547</height>
+    <height>567</height>
    </rect>
   </property>
   <property name="sizePolicy">
@@ -19,13 +19,13 @@
   <property name="minimumSize">
    <size>
     <width>689</width>
-    <height>547</height>
+    <height>567</height>
    </size>
   </property>
   <property name="maximumSize">
    <size>
     <width>689</width>
-    <height>547</height>
+    <height>567</height>
    </size>
   </property>
   <property name="windowTitle">
@@ -61,7 +61,7 @@
       <x>0</x>
       <y>0</y>
       <width>701</width>
-      <height>511</height>
+      <height>541</height>
      </rect>
     </property>
     <property name="whatsThis">
@@ -79,7 +79,7 @@
        <x>10</x>
        <y>10</y>
        <width>671</width>
-       <height>181</height>
+       <height>201</height>
       </rect>
      </property>
      <property name="title">
@@ -117,9 +117,34 @@
         <x>240</x>
         <y>80</y>
         <width>421</width>
-        <height>91</height>
+        <height>111</height>
        </rect>
       </property>
+      <property name="editTriggers">
+       <set>QAbstractItemView::NoEditTriggers</set>
+      </property>
+      <property name="alternatingRowColors">
+       <bool>true</bool>
+      </property>
+      <property name="rowCount">
+       <number>0</number>
+      </property>
+      <property name="columnCount">
+       <number>13</number>
+      </property>
+      <column/>
+      <column/>
+      <column/>
+      <column/>
+      <column/>
+      <column/>
+      <column/>
+      <column/>
+      <column/>
+      <column/>
+      <column/>
+      <column/>
+      <column/>
      </widget>
      <widget class="QLabel" name="featureExtLbl">
       <property name="geometry">
@@ -236,7 +261,7 @@
         <x>10</x>
         <y>80</y>
         <width>221</width>
-        <height>91</height>
+        <height>111</height>
        </rect>
       </property>
       <property name="title">
@@ -362,7 +387,7 @@
      <property name="geometry">
       <rect>
        <x>10</x>
-       <y>200</y>
+       <y>220</y>
        <width>671</width>
        <height>301</height>
       </rect>

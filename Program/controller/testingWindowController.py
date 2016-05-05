@@ -101,6 +101,14 @@ class TestingWindow(QtGui.QMainWindow, testingWindow.Ui_TestWdw):
 
         # write features to table
         self.testDataTab.setCurrentIndex(len(self.testDataTab)-1)
+        self.featuresTbl.setRowCount(self.features.shape[0])
+        for i in xrange(self.features.shape[0]):
+            for j in xrange(1,14):
+                isi_feature = QtGui.QTableWidgetItem(str(self.features[i,j]))
+                # print "i: "+str(i)+" j: "+str(j)+" isi: "+str(isi_feature)
+                self.featuresTbl.setItem(i,j-1,isi_feature)
+
+
 
     def add_figure(self, fig, container):
         # if self.canvas is not None:
@@ -142,6 +150,8 @@ class TestingWindow(QtGui.QMainWindow, testingWindow.Ui_TestWdw):
 
             self.extractSaveBtn.setDisabled(False)
             self.player.set_audio_source(self.audioFile)
+
+            self.testDataTab.setCurrentIndex(0)
 
     def about(self):
         QtGui.QMessageBox.information(self, "Text Dependent Speaker Verification",
