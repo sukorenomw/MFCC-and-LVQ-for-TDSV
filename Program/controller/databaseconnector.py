@@ -2,7 +2,9 @@ import sqlite3 as sql
 import numpy as np
 import io
 
-TYPE=2
+from itertools import product
+
+TYPE=1
 
 class DatabaseConnector():
     def __init__(self):
@@ -61,6 +63,15 @@ class DatabaseConnector():
             self.conn.row_factory = sql.Row
             cur = self.conn.cursor()
             cur.execute("SELECT * FROM "+table+self.whereClause(clause))
+
+        return cur.fetchall()
+
+    def select_exclude(self, table, indicator, params):
+        x = [x for x in product("?", repeat=len(params))]
+        with self.conn:
+            self.conn.row_factory = sql.Row
+            cur = self.conn.cursor()
+            cur.execute("SELECT * FROM "+table+" WHERE "+indicator+" NOT IN "+", ".join(map(str,x)).replace("'",""), params)
 
         return cur.fetchall()
 
