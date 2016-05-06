@@ -2,8 +2,9 @@
 import view.trainingWindow as trainingWindow
 import audioPlayer
 import testingWindowController as twc
-import threading
+import batchcontroller as batch
 
+from databaseconnector import TYPE
 from databaseconnector import DatabaseConnector
 from mfcc import MFCC
 from filereader import FileReader
@@ -18,11 +19,18 @@ class DBThread(QtCore.QThread):
         self.features = features
 
     def run(self):
-        output_class_id = self.db.insert("output_classes",
-                                         {"file_path": self.audioFile, "class": self.audioClassInput.text()})
-        for i in xrange(self.features.shape[0]):
-            self.db.insert_features(output_class_id, i, self.features[i, 1:14])
-            self.emit(QtCore.SIGNAL("update()"))
+        if TYPE == 1:
+            file_id = self.db.insert("files",{"file_path":self.audioFile})
+            for i in xrange(self.features.shape[0]):
+                self.db.insert_features(file_id, i, self.features[i, 1:14], str(self.audioClassInput.text()))
+                self.emit(QtCore.SIGNAL("update()"))
+
+        else:
+            output_class_id = self.db.insert("output_classes",
+                                             {"file_path": self.audioFile, "class": self.audioClassInput.text()})
+            for i in xrange(self.features.shape[0]):
+                self.db.insert_features(output_class_id, i, self.features[i, 1:14])
+                self.emit(QtCore.SIGNAL("update()"))
 
         self.db.close()
         self.emit(QtCore.SIGNAL("finish()"))
@@ -42,6 +50,7 @@ class MainWindow(QtGui.QMainWindow, trainingWindow.Ui_MainWdw):
         self.actionExit.triggered.connect(self.close)
         self.actionTraining_Data.setDisabled(True)
         self.actionTest_Data.triggered.connect(self.open_test_wdw)
+        self.actionBatch_Feature_Extraction.triggered.connect(self.open_batch_wdw)
 
         self.actionAbout_Qt.triggered.connect(QtGui.qApp.aboutQt)
         self.actionAbout.triggered.connect(self.about)
@@ -53,6 +62,10 @@ class MainWindow(QtGui.QMainWindow, trainingWindow.Ui_MainWdw):
         self.hide()
         self.testWdw = twc.TestingWindow()
         self.testWdw.show()
+
+    def open_batch_wdw(self):
+        self.batch_wdw = batch.BatchWindow()
+        self.batch_wdw.show()
 
     def show_open_dialog(self):
         self.audioFile = QtGui.QFileDialog.getOpenFileName(self, 'Open audio file',

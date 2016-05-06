@@ -591,6 +591,8 @@
     <property name="title">
      <string>Menu</string>
     </property>
+    <addaction name="actionBatch_Feature_Extraction"/>
+    <addaction name="separator"/>
     <addaction name="actionTraining_Data"/>
     <addaction name="actionTest_Data"/>
     <addaction name="separator"/>
@@ -651,6 +653,15 @@
    </property>
    <property name="text">
     <string>About Qt</string>
+   </property>
+  </action>
+  <action name="actionBatch_Feature_Extraction">
+   <property name="icon">
+    <iconset resource="image_set.qrc">
+     <normaloff>:/icons/1462517805_FILE - BATCH.png</normaloff>:/icons/1462517805_FILE - BATCH.png</iconset>
+   </property>
+   <property name="text">
+    <string>Batch Feature Extraction</string>
    </property>
   </action>
  </widget>

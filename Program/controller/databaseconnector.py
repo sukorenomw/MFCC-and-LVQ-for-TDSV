@@ -2,29 +2,47 @@ import sqlite3 as sql
 import numpy as np
 import io
 
+TYPE=2
+
 class DatabaseConnector():
     def __init__(self):
         sql.register_adapter(np.ndarray, self.adapt_array)
         sql.register_converter("array", self.convert_array)
-        self.conn = sql.connect('database/features.db', isolation_level=None, detect_types=sql.PARSE_DECLTYPES, check_same_thread=False)
+        self.conn = sql.connect('database/features'+str(TYPE)+'.db', isolation_level=None, detect_types=sql.PARSE_DECLTYPES, check_same_thread=False)
 
-        self.conn.execute("CREATE TABLE IF NOT EXISTS `output_classes` ("
-                          "`id`	INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,"
-                          "`file_path` TEXT NOT NULL,"
-                          "`class` TEXT NOT NULL)")
+        if TYPE == 1:
+            self.conn.execute("CREATE TABLE IF NOT EXISTS `files` ("
+                              "`id` INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,"
+                              "`file_path` TEXT NOT NULL)")
 
-        self.conn.execute("CREATE TABLE IF NOT EXISTS `feature_sets` ("
-                          "`id` INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,"
-                          "`output_class_id` INTEGER NOT NULL,"
-                          "`frame` INTEGER NOT NULL,"
-                          "`features` array NOT NULL)")
+            self.conn.execute("CREATE TABLE IF NOT EXISTS `features` ("
+                              "`id` INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,"
+                              "`file_id` INTEGER NOT NULL,"
+                              "`frame` INTEGER NOT NULL,"
+                              "`feature` array NOT NULL,"
+                              "`class` TEXT NOT NULL)")
+
+        else:
+            self.conn.execute("CREATE TABLE IF NOT EXISTS `output_classes` ("
+                              "`id`	INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,"
+                              "`file_path` TEXT NOT NULL,"
+                              "`class` TEXT NOT NULL)")
+
+            self.conn.execute("CREATE TABLE IF NOT EXISTS `feature_sets` ("
+                              "`id` INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,"
+                              "`output_class_id` INTEGER NOT NULL,"
+                              "`frame` INTEGER NOT NULL,"
+                              "`features` array NOT NULL)")
 
     def close(self):
         self.conn.close()
 
-    def insert_features(self, *arg):
+    def insert_features(self, arg):
         cur = self.conn.cursor()
-        cur.execute("INSERT INTO feature_sets (output_class_id, frame, features) VALUES (?,?,?)", arg)
+        if TYPE == 1:
+            cur.executemany("INSERT INTO features (file_id, frame, feature, class) VALUES (?,?,?,?)", (arg))
+        else:
+            cur.executemany("INSERT INTO feature_sets (output_class_id, frame, features) VALUES (?,?,?)", (arg))
         return cur.lastrowid
 
     def insert(self, table, params):
@@ -45,6 +63,22 @@ class DatabaseConnector():
             cur.execute("SELECT * FROM "+table+self.whereClause(clause))
 
         return cur.fetchall()
+
+    def select_group(self, table, group):
+        with self.conn:
+            self.conn.row_factory = sql.Row
+            cur = self.conn.cursor()
+            cur.execute("SELECT * FROM "+table+" GROUP BY "+group)
+
+        return cur.fetchall()
+
+    def select_one(self, table, clause=None):
+        with self.conn:
+            self.conn.row_factory = sql.Row
+            cur = self.conn.cursor()
+            cur.execute("SELECT * FROM " + table + self.whereClause(clause))
+
+        return cur.fetchone()
 
     def update(self, table, params, clause = None):
         strings = []

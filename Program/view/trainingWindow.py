@@ -241,6 +241,13 @@ class Ui_MainWdw(object):
         icon8.addPixmap(QtGui.QPixmap(_fromUtf8(":/icons/qt.png")), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.actionAbout_Qt.setIcon(icon8)
         self.actionAbout_Qt.setObjectName(_fromUtf8("actionAbout_Qt"))
+        self.actionBatch_Feature_Extraction = QtGui.QAction(MainWdw)
+        icon9 = QtGui.QIcon()
+        icon9.addPixmap(QtGui.QPixmap(_fromUtf8(":/icons/1462517805_FILE - BATCH.png")), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.actionBatch_Feature_Extraction.setIcon(icon9)
+        self.actionBatch_Feature_Extraction.setObjectName(_fromUtf8("actionBatch_Feature_Extraction"))
+        self.menuMenu.addAction(self.actionBatch_Feature_Extraction)
+        self.menuMenu.addSeparator()
         self.menuMenu.addAction(self.actionTraining_Data)
         self.menuMenu.addAction(self.actionTest_Data)
         self.menuMenu.addSeparator()
@@ -285,6 +292,7 @@ class Ui_MainWdw(object):
         self.actionExit.setText(_translate("MainWdw", "Exit", None))
         self.actionAbout.setText(_translate("MainWdw", "About", None))
         self.actionAbout_Qt.setText(_translate("MainWdw", "About Qt", None))
+        self.actionBatch_Feature_Extraction.setText(_translate("MainWdw", "Batch Feature Extraction", None))
 
 from PyQt4 import phonon
 import image_set_rc
