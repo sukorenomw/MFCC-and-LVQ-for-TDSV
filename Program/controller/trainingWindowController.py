@@ -3,7 +3,9 @@ import view.trainingWindow as trainingWindow
 import audioPlayer
 import testingWindowController as twc
 import batchcontroller as batch
+import numpy
 
+from lvq import LVQ
 from databaseconnector import TYPE
 from databaseconnector import DatabaseConnector
 from mfcc import MFCC
@@ -35,6 +37,24 @@ class DBThread(QtCore.QThread):
         self.db.close()
         self.emit(QtCore.SIGNAL("finish()"))
 
+class LVQTrainThread(QtCore.QThread):
+    taskFinished = QtCore.pyqtSignal(numpy.ndarray)
+    def __init__(self, parent, lvq, max_epoh, alpha, alpha_decay):
+        QtCore.QThread.__init__(self, parent)
+        self.lvq = lvq
+        self.max_epoh = max_epoh
+        self.alpha = alpha
+        self.alpha_decay = alpha_decay
+
+    def run(self):
+        self.ref_vectors = self.lvq.init_ref_vector()
+        self.data_sets = self.lvq.init_data_set(self.ref_vectors)
+        self.final_weight = self.lvq.start_training(self.ref_vectors, self.data_sets, int(self.max_epoh.text()),
+                                                    float(self.alpha.value()),
+                                                    float(self.alpha_decay.value()))
+        self.taskFinished.emit(self.final_weight)
+
+
 class MainWindow(QtGui.QMainWindow, trainingWindow.Ui_MainWdw):
     def __init__(self):
         super(self.__class__, self).__init__()
@@ -46,6 +66,7 @@ class MainWindow(QtGui.QMainWindow, trainingWindow.Ui_MainWdw):
                                               self.audioPauseBtn,
                                               self.audioStopBtn)
         self.mfcc = MFCC()
+        self.lvq = LVQ()
         self.init_ui()
         self.actionExit.triggered.connect(self.close)
         self.actionTraining_Data.setDisabled(True)
@@ -57,6 +78,7 @@ class MainWindow(QtGui.QMainWindow, trainingWindow.Ui_MainWdw):
 
         self.openAudioBtn.clicked.connect(self.show_open_dialog)
         self.extractSaveBtn.clicked.connect(self.extract_and_save)
+        self.trainDataBtn.clicked.connect(self.train_data)
 
     def open_test_wdw(self):
         self.hide()
@@ -98,6 +120,31 @@ class MainWindow(QtGui.QMainWindow, trainingWindow.Ui_MainWdw):
     def update_progress(self):
         self.n+=1
         self.trainProgress.setValue(self.n)
+
+    def train_data(self):
+        self.trainProgress.setRange(0,0)
+
+        trainingThread = LVQTrainThread(self,self.lvq, self.iterVal, self.learningRVal, self.learningRDecrVal)
+        trainingThread.start()
+        trainingThread.taskFinished.connect(self.finish_training)
+
+    def finish_training(self, final_weight):
+        self.newWeightTbl.setRowCount(final_weight.shape[0])
+        self.newWeightTbl.setColumnCount(final_weight.shape[1])
+        self.newWeightTbl.setColumnWidth(0, 500)
+        for i in xrange(final_weight.shape[0]):
+            for j in xrange(final_weight.shape[1]):
+                weight = QtGui.QTableWidgetItem(str(final_weight[i, j]))
+                # print "i: "+str(i)+" j: "+str(j)+" isi: "+str(isi_feature)
+                self.newWeightTbl.setItem(i, j, weight)
+
+        self.trainProgress.setRange(0,1)
+        self.trainProgress.setValue(1)
+
+        QtGui.QMessageBox.information(None, "Success!",
+                                      "Training data complete!")
+
+
 
     def extract_and_save(self):
         if self.audioClassInput.text() == "":
