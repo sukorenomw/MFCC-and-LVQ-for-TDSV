@@ -24,6 +24,10 @@ class DatabaseConnector():
                               "`feature` array NOT NULL,"
                               "`class` TEXT NOT NULL)")
 
+            self.conn.execute("CREATE TABLE IF NOT EXISTS `final_weight` ("
+                              "`vectors` array NOT NULL,"
+                              "`class` TEXT NOT NULL)")
+
         else:
             self.conn.execute("CREATE TABLE IF NOT EXISTS `output_classes` ("
                               "`id`	INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,"
@@ -45,6 +49,12 @@ class DatabaseConnector():
             cur.executemany("INSERT INTO features (file_id, frame, feature, class) VALUES (?,?,?,?)", (arg))
         else:
             cur.executemany("INSERT INTO feature_sets (output_class_id, frame, features) VALUES (?,?,?)", (arg))
+        return cur.lastrowid
+
+    def insert_weight(self, arg):
+        cur = self.conn.cursor()
+        self.delete("final_weight")
+        cur.executemany("INSERT INTO final_weight (vectors, class) VALUES (?,?)", (arg))
         return cur.lastrowid
 
     def insert(self, table, params):

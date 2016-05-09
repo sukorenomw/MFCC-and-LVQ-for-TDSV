@@ -41,6 +41,7 @@ class LVQTrainThread(QtCore.QThread):
     taskFinished = QtCore.pyqtSignal(numpy.ndarray)
     def __init__(self, parent, lvq, max_epoh, alpha, alpha_decay):
         QtCore.QThread.__init__(self, parent)
+        self.db = DatabaseConnector()
         self.lvq = lvq
         self.max_epoh = max_epoh
         self.alpha = alpha
@@ -49,9 +50,12 @@ class LVQTrainThread(QtCore.QThread):
     def run(self):
         self.ref_vectors = self.lvq.init_ref_vector()
         self.data_sets = self.lvq.init_data_set(self.ref_vectors)
-        self.final_weight = self.lvq.start_training(self.ref_vectors, self.data_sets, int(self.max_epoh.text()),
+        self.final_weight = self.lvq.start_training(self.ref_vectors, self.data_sets, int(self.max_epoh.value()),
                                                     float(self.alpha.value()),
                                                     float(self.alpha_decay.value()))
+
+        self.db.insert_weight(self.final_weight)
+
         self.taskFinished.emit(self.final_weight)
 
 
@@ -122,6 +126,10 @@ class MainWindow(QtGui.QMainWindow, trainingWindow.Ui_MainWdw):
         self.trainProgress.setValue(self.n)
 
     def train_data(self):
+        self.trainDataBtn.setDisabled(True)
+        self.iterVal.setDisabled(True)
+        self.learningRDecrVal.setDisabled(True)
+        self.learningRVal.setDisabled(True)
         self.trainProgress.setRange(0,0)
 
         trainingThread = LVQTrainThread(self,self.lvq, self.iterVal, self.learningRVal, self.learningRDecrVal)
@@ -140,6 +148,11 @@ class MainWindow(QtGui.QMainWindow, trainingWindow.Ui_MainWdw):
 
         self.trainProgress.setRange(0,1)
         self.trainProgress.setValue(1)
+
+        self.trainDataBtn.setDisabled(False)
+        self.iterVal.setDisabled(False)
+        self.learningRDecrVal.setDisabled(False)
+        self.learningRVal.setDisabled(False)
 
         QtGui.QMessageBox.information(None, "Success!",
                                       "Training data complete!")

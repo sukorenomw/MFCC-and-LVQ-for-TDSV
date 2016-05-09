@@ -205,6 +205,7 @@ class Ui_MainWdw(object):
         self.iterVal.setFrame(False)
         self.iterVal.setButtonSymbols(QtGui.QAbstractSpinBox.NoButtons)
         self.iterVal.setMaximum(9999)
+        self.iterVal.setProperty("value", 1)
         self.iterVal.setObjectName(_fromUtf8("iterVal"))
         MainWdw.setCentralWidget(self.centralwidget)
         self.menubar = QtGui.QMenuBar(MainWdw)

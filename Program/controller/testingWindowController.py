@@ -4,11 +4,13 @@ import audioPlayer
 import trainingWindowController as twc
 import numpy as np
 
+
 import matplotlib
 
 matplotlib.rc('xtick', labelsize=7)
 matplotlib.rc('ytick', labelsize=7)
 
+from lvq import LVQ
 from matplotlib.figure import Figure
 from matplotlib.backends.backend_qt4agg import (
     FigureCanvasQTAgg as FigureCanvas)
@@ -23,6 +25,7 @@ class TestingWindow(QtGui.QMainWindow, testingWindow.Ui_TestWdw):
         super(self.__class__, self).__init__()
         self.setupUi(self)
         self.mfcc = MFCC()
+        self.lvq = LVQ()
         self.player = audioPlayer.AudioPlayer(self.volumeSlider,
                                               self.seekSlider,
                                               self.lcdNumber,
@@ -40,6 +43,7 @@ class TestingWindow(QtGui.QMainWindow, testingWindow.Ui_TestWdw):
 
         self.openAudioBtn.clicked.connect(self.show_open_dialog)
         self.extractSaveBtn.clicked.connect(self.extract_features)
+        self.identifyBtn.clicked.connect(self.identify_speaker)
 
     def init_ui(self):
         palette = QtGui.QPalette()
@@ -50,9 +54,15 @@ class TestingWindow(QtGui.QMainWindow, testingWindow.Ui_TestWdw):
         self.audioStopBtn.setDisabled(True)
         self.extractSaveBtn.setDisabled(True)
 
-        self.testProgress.setValue(0)
         self.lcdNumber.display("00:00")
         self.lcdNumber.setPalette(palette)
+
+    def identify_speaker(self):
+        result = self.lvq.test_data(self.features[:,1:14])
+        print "vote : "+str(result)
+
+        self.speakerVal.setText(": "+str(result[0][0][:result[0][0].find('-')]))
+        self.wordVal.setText(": "+str(result[0][0][result[0][0].find('-')+1:]))
 
     def extract_features(self):
         # frame blocking
@@ -107,8 +117,6 @@ class TestingWindow(QtGui.QMainWindow, testingWindow.Ui_TestWdw):
                 isi_feature = QtGui.QTableWidgetItem(str(self.features[i,j]))
                 # print "i: "+str(i)+" j: "+str(j)+" isi: "+str(isi_feature)
                 self.featuresTbl.setItem(i,j-1,isi_feature)
-
-
 
     def add_figure(self, fig, container):
         # if self.canvas is not None:

@@ -20,5 +20,6 @@ def allfunc():
     windowed = mfcc.hamm_window(framed)
     fft = mfcc.calc_fft(windowed)
     energy, fbank = mfcc.fbank(fft,fs)
+    features = mfcc.features(energy)
 
-    return mfcc, signal, fs, frame, framed, windowed, fft, energy, fbank
+    return mfcc, signal, fs, frame, framed, windowed, fft, energy, fbank, features
