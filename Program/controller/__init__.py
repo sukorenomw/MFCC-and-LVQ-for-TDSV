@@ -1,2 +1,7 @@
 import trainingWindowController
 import testingWindowController
+import databaseconnector
+import audioPlayer
+import filereader
+import mfcc
+import lvq

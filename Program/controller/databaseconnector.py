@@ -7,10 +7,10 @@ from itertools import product
 TYPE=1
 
 class DatabaseConnector():
-    def __init__(self):
+    def __init__(self, database_name):
         sql.register_adapter(np.ndarray, self.adapt_array)
         sql.register_converter("array", self.convert_array)
-        self.conn = sql.connect('database/features'+str(TYPE)+'.db', isolation_level=None, detect_types=sql.PARSE_DECLTYPES, check_same_thread=False)
+        self.conn = sql.connect('database/'+str(database_name)+'.db', isolation_level=None, detect_types=sql.PARSE_DECLTYPES, check_same_thread=False)
 
         if TYPE == 1:
             self.conn.execute("CREATE TABLE IF NOT EXISTS `files` ("
@@ -90,6 +90,14 @@ class DatabaseConnector():
             self.conn.row_factory = sql.Row
             cur = self.conn.cursor()
             cur.execute("SELECT * FROM "+table+" GROUP BY "+group)
+
+        return cur.fetchall()
+
+    def select_random(self, table, group):
+        with self.conn:
+            self.conn.row_factory = sql.Row
+            cur = self.conn.cursor()
+            cur.execute("SELECT * FROM (SELECT * FROM "+str(table)+" ORDER BY random()) GROUP BY "+str(group))
 
         return cur.fetchall()
 

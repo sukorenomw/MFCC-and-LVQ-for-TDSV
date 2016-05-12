@@ -90,7 +90,7 @@
        <rect>
         <x>10</x>
         <y>22</y>
-        <width>121</width>
+        <width>101</width>
         <height>31</height>
        </rect>
       </property>
@@ -103,7 +103,7 @@
        <rect>
         <x>10</x>
         <y>60</y>
-        <width>121</width>
+        <width>101</width>
         <height>31</height>
        </rect>
       </property>
@@ -167,7 +167,7 @@
         <rect>
          <x>10</x>
          <y>20</y>
-         <width>81</width>
+         <width>71</width>
          <height>16</height>
         </rect>
        </property>
@@ -178,26 +178,7 @@
         </font>
        </property>
        <property name="text">
-        <string>Database Name</string>
-       </property>
-      </widget>
-      <widget class="QLabel" name="audioFilenameLbl_2">
-       <property name="geometry">
-        <rect>
-         <x>90</x>
-         <y>20</y>
-         <width>101</width>
-         <height>16</height>
-        </rect>
-       </property>
-       <property name="font">
-        <font>
-         <weight>50</weight>
-         <bold>false</bold>
-        </font>
-       </property>
-       <property name="text">
-        <string>:</string>
+        <string>Database    :</string>
        </property>
       </widget>
       <widget class="QLabel" name="progressLbl">
@@ -300,6 +281,16 @@
         <string>:</string>
        </property>
       </widget>
+      <widget class="QLineEdit" name="databaseNameVal">
+       <property name="geometry">
+        <rect>
+         <x>80</x>
+         <y>20</y>
+         <width>113</width>
+         <height>20</height>
+        </rect>
+       </property>
+      </widget>
      </widget>
      <widget class="QProgressBar" name="progressBar">
       <property name="geometry">
@@ -315,6 +306,38 @@
       </property>
       <property name="textVisible">
        <bool>false</bool>
+      </property>
+     </widget>
+     <widget class="QCheckBox" name="inclWordCheck">
+      <property name="geometry">
+       <rect>
+        <x>120</x>
+        <y>30</y>
+        <width>101</width>
+        <height>17</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Include Word</string>
+      </property>
+      <property name="checked">
+       <bool>true</bool>
+      </property>
+     </widget>
+     <widget class="QCheckBox" name="silenceCheck">
+      <property name="geometry">
+       <rect>
+        <x>120</x>
+        <y>50</y>
+        <width>101</width>
+        <height>17</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Silence Removal</string>
+      </property>
+      <property name="checked">
+       <bool>true</bool>
       </property>
      </widget>
     </widget>

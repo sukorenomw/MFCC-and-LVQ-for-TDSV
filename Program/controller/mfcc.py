@@ -86,7 +86,7 @@ class MFCC():
 
         if np.log2(N) % 1 > 0:
             raise ValueError("input harus power of 2")
-        elif N <= 32:  # this cutoff should be optimized
+        elif N <= 32:
             return self.DFT(signal)
         else:
             X_even = self.FFT(signal[::2]) # ambil yang genap

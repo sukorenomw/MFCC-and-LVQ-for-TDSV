@@ -396,9 +396,9 @@
      <widget class="QTableWidget" name="newWeightTbl">
       <property name="geometry">
        <rect>
-        <x>225</x>
+        <x>235</x>
         <y>30</y>
-        <width>421</width>
+        <width>411</width>
         <height>171</height>
        </rect>
       </property>
@@ -434,7 +434,7 @@
        <rect>
         <x>10</x>
         <y>180</y>
-        <width>201</width>
+        <width>211</width>
         <height>23</height>
        </rect>
       </property>
@@ -583,6 +583,52 @@
         <number>1</number>
        </property>
       </widget>
+     </widget>
+     <widget class="QLabel" name="iterLbl_2">
+      <property name="geometry">
+       <rect>
+        <x>90</x>
+        <y>130</y>
+        <width>61</width>
+        <height>16</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Database : </string>
+      </property>
+     </widget>
+     <widget class="QComboBox" name="databaseSelect">
+      <property name="geometry">
+       <rect>
+        <x>90</x>
+        <y>150</y>
+        <width>131</width>
+        <height>20</height>
+       </rect>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="reloadDatabaseBtn">
+      <property name="geometry">
+       <rect>
+        <x>150</x>
+        <y>130</y>
+        <width>21</width>
+        <height>16</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="icon">
+       <iconset resource="image_set.qrc">
+        <normaloff>:/icons/1462919668_Update.png</normaloff>:/icons/1462919668_Update.png</iconset>
+      </property>
+      <property name="iconSize">
+       <size>
+        <width>12</width>
+        <height>12</height>
+       </size>
+      </property>
      </widget>
     </widget>
    </widget>

@@ -4,8 +4,8 @@ from databaseconnector import DatabaseConnector
 from collections import Counter
 
 class LVQ():
-    def __init__(self):
-        self.db = DatabaseConnector()
+    def __init__(self, database_name):
+        self.db = DatabaseConnector(database_name)
 
     def init_ref_vector(self):
         '''
@@ -15,7 +15,7 @@ class LVQ():
         3 = feature
         4 = class
         '''
-        return np.asarray(self.db.select_group("features","class"), dtype=object)
+        return np.asarray(self.db.select_random("features","class"), dtype=object)
 
     def init_data_set(self, ref_vector):
         '''
@@ -27,7 +27,7 @@ class LVQ():
         '''
         return np.asarray(self.db.select_exclude("features","id",ref_vector[:,0]), dtype=object)
 
-    def eucl(self,x, y):
+    def eucl(self, x, y):
         return np.sqrt(np.sum((x - y) ** 2))
 
     def start_training(self,ref_vectors, data_set, max_epoh, alpha, alpha_decay):

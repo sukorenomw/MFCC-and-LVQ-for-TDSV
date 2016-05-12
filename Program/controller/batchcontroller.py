@@ -7,15 +7,16 @@ from filereader import FileReader
 from PyQt4 import QtCore, QtGui
 
 class ExtractThread(QtCore.QThread):
-    def __init__(self, parent, audio_files):
+    def __init__(self, parent, audio_files, database_name):
         QtCore.QThread.__init__(self, parent)
         self.audio_files = audio_files
         self.mfcc = MFCC()
-        self.db = DatabaseConnector()
+        self.par = parent
+        self.db = DatabaseConnector(database_name)
 
     def run(self):
         self.emit(QtCore.SIGNAL("update()"))
-        for file_audio in self.audio_files:
+        for index,file_audio in enumerate(self.audio_files):
             file_audio = str(file_audio)
             self.audio_signal, self.audio_fs = FileReader.read_audio(file_audio)
             self.silenced_signal, self.audio_fs = self.mfcc.remove_silence(file_audio)
@@ -29,7 +30,8 @@ class ExtractThread(QtCore.QThread):
             if TYPE == 1:
                 file_id = self.db.insert("files", {"file_path": file_audio})
                 for i in xrange(self.features.shape[0]):
-                    features.append([file_id, i, self.features[i, 1:14],str(FileReader.get_output_class(file_audio))])
+                    # features.append([file_id, i, self.features[i, 1:14],str(FileReader.get_output_class(file_audio))])
+                    features.append([file_id, i, self.features[i, 1:14], str(self.par.featuresTbl.item(index,1).text())])
 
                 self.db.insert_features(features)
 
@@ -55,10 +57,10 @@ class BatchWindow(QtGui.QMainWindow, batch_wdw.Ui_MainWdw):
         self.openAudioBtn.clicked.connect(self.show_open_dialog)
         self.extractSaveBtn.clicked.connect(self.extract_and_save)
 
+        self.inclWordCheck.clicked.connect(self.include_word)
+
         self.audio_files = []
         self.progressLbl.setVisible(False)
-
-        self.audioFilenameLbl_2.setText(": "+"feature"+str(TYPE)+".db")
 
     def show_open_dialog(self):
         audioFiles = QtGui.QFileDialog.getOpenFileNames(self, 'Open audio file',
@@ -76,12 +78,22 @@ class BatchWindow(QtGui.QMainWindow, batch_wdw.Ui_MainWdw):
 
         self.audioFilenameLbl.setText(": " + str(len(self.audio_files)))
 
+    def include_word(self):
+        if self.inclWordCheck.isChecked():
+            for i in xrange(self.featuresTbl.rowCount()):
+                text = str(self.featuresTbl.item(i, 0).text())
+                self.featuresTbl.setItem(i, 1, QtGui.QTableWidgetItem(str(FileReader.get_output_class(str(text)))))
+        else:
+            for i in xrange(self.featuresTbl.rowCount()):
+                text = str(self.featuresTbl.item(i, 1).text())
+                self.featuresTbl.setItem(i, 1, QtGui.QTableWidgetItem(str(text[:text.rfind("-")])))
+
     def extract_and_save(self):
         self.progressLbl.setVisible(True)
         self.n = 0
         self.progressBar.setMaximum(len(self.audio_files)+1)
         self.progressBar.setValue(0)
-        insert_feature = ExtractThread(self, self.audio_files)
+        insert_feature = ExtractThread(self, self.audio_files, str(self.databaseNameVal.text()))
         insert_feature.start()
         QtCore.QObject.connect(insert_feature, QtCore.SIGNAL("finish()"), self.finish_thread)
         QtCore.QObject.connect(insert_feature, QtCore.SIGNAL("update()"), self.update_progress)

@@ -18,6 +18,8 @@ from matplotlib.backends.backend_qt4agg import (
 from mfcc import MFCC
 from filereader import FileReader
 from PyQt4 import QtCore, QtGui
+from os import listdir
+from os.path import isfile, join
 
 
 class TestingWindow(QtGui.QMainWindow, testingWindow.Ui_TestWdw):
@@ -25,7 +27,6 @@ class TestingWindow(QtGui.QMainWindow, testingWindow.Ui_TestWdw):
         super(self.__class__, self).__init__()
         self.setupUi(self)
         self.mfcc = MFCC()
-        self.lvq = LVQ()
         self.player = audioPlayer.AudioPlayer(self.volumeSlider,
                                               self.seekSlider,
                                               self.lcdNumber,
@@ -33,6 +34,7 @@ class TestingWindow(QtGui.QMainWindow, testingWindow.Ui_TestWdw):
                                               self.audioPauseBtn,
                                               self.audioStopBtn)
         self.init_ui()
+        self.init_databases()
         self.canvas = None
         self.actionTest_Data.setDisabled(True)
 
@@ -57,7 +59,12 @@ class TestingWindow(QtGui.QMainWindow, testingWindow.Ui_TestWdw):
         self.lcdNumber.display("00:00")
         self.lcdNumber.setPalette(palette)
 
+    def init_databases(self):
+        self.database_list = [f[:len(f) - 3] for f in listdir('database/') if isfile(join('database/', f))]
+        self.databaseSelect.addItems(QtCore.QStringList(self.database_list))
+
     def identify_speaker(self):
+        self.lvq = LVQ(str(self.databaseSelect.currentText()))
         result = self.lvq.test_data(self.features[:,1:14])
         print "vote : "+str(result)
 

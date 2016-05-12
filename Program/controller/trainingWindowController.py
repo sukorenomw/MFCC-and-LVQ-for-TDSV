@@ -11,6 +11,8 @@ from databaseconnector import DatabaseConnector
 from mfcc import MFCC
 from filereader import FileReader
 from PyQt4 import QtCore, QtGui
+from os import listdir
+from os.path import isfile, join
 
 class DBThread(QtCore.QThread):
     def __init__(self, parent, audioFile, audioClassInput, features):
@@ -39,9 +41,9 @@ class DBThread(QtCore.QThread):
 
 class LVQTrainThread(QtCore.QThread):
     taskFinished = QtCore.pyqtSignal(numpy.ndarray)
-    def __init__(self, parent, lvq, max_epoh, alpha, alpha_decay):
+    def __init__(self, parent, lvq, max_epoh, alpha, alpha_decay, database_name):
         QtCore.QThread.__init__(self, parent)
-        self.db = DatabaseConnector()
+        self.db = DatabaseConnector(database_name)
         self.lvq = lvq
         self.max_epoh = max_epoh
         self.alpha = alpha
@@ -70,8 +72,8 @@ class MainWindow(QtGui.QMainWindow, trainingWindow.Ui_MainWdw):
                                               self.audioPauseBtn,
                                               self.audioStopBtn)
         self.mfcc = MFCC()
-        self.lvq = LVQ()
         self.init_ui()
+        self.init_databases()
         self.actionExit.triggered.connect(self.close)
         self.actionTraining_Data.setDisabled(True)
         self.actionTest_Data.triggered.connect(self.open_test_wdw)
@@ -83,6 +85,12 @@ class MainWindow(QtGui.QMainWindow, trainingWindow.Ui_MainWdw):
         self.openAudioBtn.clicked.connect(self.show_open_dialog)
         self.extractSaveBtn.clicked.connect(self.extract_and_save)
         self.trainDataBtn.clicked.connect(self.train_data)
+        self.reloadDatabaseBtn.clicked.connect(self.init_databases)
+
+    def init_databases(self):
+        self.databaseSelect.clear()
+        self.database_list = [f[:len(f)-3] for f in listdir('database/') if isfile(join('database/', f))]
+        self.databaseSelect.addItems(QtCore.QStringList(self.database_list))
 
     def open_test_wdw(self):
         self.hide()
@@ -126,13 +134,14 @@ class MainWindow(QtGui.QMainWindow, trainingWindow.Ui_MainWdw):
         self.trainProgress.setValue(self.n)
 
     def train_data(self):
+        self.lvq = LVQ(str(self.databaseSelect.currentText()))
         self.trainDataBtn.setDisabled(True)
         self.iterVal.setDisabled(True)
         self.learningRDecrVal.setDisabled(True)
         self.learningRVal.setDisabled(True)
         self.trainProgress.setRange(0,0)
 
-        trainingThread = LVQTrainThread(self,self.lvq, self.iterVal, self.learningRVal, self.learningRDecrVal)
+        trainingThread = LVQTrainThread(self,self.lvq, self.iterVal, self.learningRVal, self.learningRDecrVal, str(self.databaseSelect.currentText()))
         trainingThread.start()
         trainingThread.taskFinished.connect(self.finish_training)
 
