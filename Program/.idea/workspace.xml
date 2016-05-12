@@ -2,26 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="4984340f-e880-4a5a-9ef6-683750ab9539" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Dokumen/PENERAPAN METODE MEL FREQUENCY CEPTRAL COEFFICIENT DAN LEARNING VECTOR QUANTIZATION UNTUK TEXT-DEPENDENT SPEAKER VERIFICATION.docx" afterPath="$PROJECT_DIR$/../Dokumen/PENERAPAN METODE MEL FREQUENCY CEPTRAL COEFFICIENT DAN LEARNING VECTOR QUANTIZATION UNTUK TEXT-DEPENDENT SPEAKER VERIFICATION.docx" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Dokumen/PENERAPAN METODE MEL FREQUENCY CEPTRAL COEFFICIENT DAN LEARNING VECTOR QUANTIZATION UNTUK TEXT-DEPENDENT SPEAKER VERIFICATION.pdf" afterPath="$PROJECT_DIR$/../Dokumen/PENERAPAN METODE MEL FREQUENCY CEPTRAL COEFFICIENT DAN LEARNING VECTOR QUANTIZATION UNTUK TEXT-DEPENDENT SPEAKER VERIFICATION.pdf" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/database/features1.db" afterPath="$PROJECT_DIR$/database/features1.db" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/view/ui_files/BatchTestWindow.ui" afterPath="$PROJECT_DIR$/view/ui_files/BatchTestWindow.ui" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/view/ui_files/MainWindow.ui" afterPath="$PROJECT_DIR$/view/ui_files/MainWindow.ui" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/view/ui_files/TestWindow.ui" afterPath="$PROJECT_DIR$/view/ui_files/TestWindow.ui" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/controller/__init__.py" afterPath="$PROJECT_DIR$/controller/__init__.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/controller/batchcontroller.py" afterPath="$PROJECT_DIR$/controller/batchcontroller.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/controller/databaseconnector.py" afterPath="$PROJECT_DIR$/controller/databaseconnector.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/controller/filereader.py" afterPath="$PROJECT_DIR$/controller/filereader.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/controller/lvq.py" afterPath="$PROJECT_DIR$/controller/lvq.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/controller/mfcc.py" afterPath="$PROJECT_DIR$/controller/mfcc.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/controller/testingWindowController.py" afterPath="$PROJECT_DIR$/controller/testingWindowController.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/controller/trainingWindowController.py" afterPath="$PROJECT_DIR$/controller/trainingWindowController.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/view/batchTrainWindow.py" afterPath="$PROJECT_DIR$/view/batchTrainWindow.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/view/image_set_rc.py" afterPath="$PROJECT_DIR$/view/image_set_rc.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/view/testingWindow.py" afterPath="$PROJECT_DIR$/view/testingWindow.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/view/trainingWindow.py" afterPath="$PROJECT_DIR$/view/trainingWindow.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/view/ui_files/image_set.qrc" afterPath="$PROJECT_DIR$/view/ui_files/image_set.qrc" />
     </list>
     <ignored path="Program.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -227,38 +208,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="Program" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Program" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Program" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="view" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Program" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Program" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="view" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ui_files" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -573,12 +522,12 @@
     <frame x="-8" y="22" width="1382" height="754" extended-state="6" />
     <editor active="false" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.16071428" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.16071428" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32850242" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3268921" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.31078905" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.31078905" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33977455" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
