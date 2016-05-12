@@ -2,7 +2,28 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="4984340f-e880-4a5a-9ef6-683750ab9539" name="Default" comment="">
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../Data/Uji/Hulda/hulda1.wav" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../Data/Uji/Hulda/hulda2.wav" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../Data/Uji/Hulda/hulda3.wav" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../Data/Uji/Hulda/hulda4.wav" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../Data/Uji/Jeremy/jeremy1.wav" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../Data/Uji/Jeremy/jeremy2.wav" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../Data/Uji/Jeremy/jeremy3.wav" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../Data/Uji/Jeremy/jeremy4.wav" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../Data/Uji/Reno/reno1.wav" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../Data/Uji/Reno/reno2.wav" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../Data/Uji/Reno/reno3.wav" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../Data/Uji/Reno/reno4.wav" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../Data/Uji/Riana/riana1.wav" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../Data/Uji/Riana/riana2.wav" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../Data/Uji/Riana/riana3.wav" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../Data/Uji/Riana/riana4.wav" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../Data/Uji/Rifky/rifky1.wav" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../Data/Uji/Rifky/rifky2.wav" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../Data/Uji/Rifky/rifky3.wav" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../Data/Uji/Rifky/rifky4.wav" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/controller/testingWindowController.py" afterPath="$PROJECT_DIR$/controller/testingWindowController.py" />
     </list>
     <ignored path="Program.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -47,7 +68,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="batchcontroller.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="batchcontroller.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/controller/batchcontroller.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="195">
@@ -57,11 +78,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="lvq.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="lvq.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/controller/lvq.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="153">
-              <caret line="12" column="19" selection-start-line="12" selection-start-column="19" selection-end-line="12" selection-end-column="19" />
+            <state relative-caret-position="187">
+              <caret line="17" column="47" selection-start-line="17" selection-start-column="41" selection-end-line="17" selection-end-column="47" />
               <folding>
                 <element signature="e#0#18#0" expanded="true" />
               </folding>
@@ -84,8 +105,8 @@
       <file leaf-file-name="testingWindowController.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/controller/testingWindowController.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="17">
-              <caret line="67" column="0" selection-start-line="67" selection-start-column="0" selection-end-line="67" selection-end-column="0" />
+            <state relative-caret-position="439">
+              <caret line="76" column="41" selection-start-line="76" selection-start-column="41" selection-end-line="76" selection-end-column="41" />
               <folding>
                 <element signature="e#15#57#0" expanded="true" />
               </folding>
@@ -96,7 +117,7 @@
       <file leaf-file-name="trainingWindowController.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/controller/trainingWindowController.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="371">
+            <state relative-caret-position="-751">
               <caret line="41" column="37" selection-start-line="41" selection-start-column="37" selection-end-line="41" selection-end-column="37" />
               <folding>
                 <element signature="e#15#59#0" expanded="true" />
@@ -148,15 +169,15 @@
         <option value="$PROJECT_DIR$/controller/TrainingWindowController.py" />
         <option value="$PROJECT_DIR$/Main.py" />
         <option value="$PROJECT_DIR$/controller/audioPlayer.py" />
-        <option value="$PROJECT_DIR$/controller/testingWindowController.py" />
         <option value="$PROJECT_DIR$/controller/filereader.py" />
         <option value="$PROJECT_DIR$/controller/trainingWindowController.py" />
         <option value="$PROJECT_DIR$/controller/databaseconnector.py" />
-        <option value="$PROJECT_DIR$/controller/lvq.py" />
         <option value="$PROJECT_DIR$/functiontester.py" />
         <option value="$PROJECT_DIR$/controller/__init__.py" />
         <option value="$PROJECT_DIR$/controller/mfcc.py" />
         <option value="$PROJECT_DIR$/controller/batchcontroller.py" />
+        <option value="$PROJECT_DIR$/controller/testingWindowController.py" />
+        <option value="$PROJECT_DIR$/controller/lvq.py" />
       </list>
     </option>
   </component>
@@ -520,9 +541,9 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="22" width="1382" height="754" extended-state="6" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.16071428" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.16071428" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32850242" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
@@ -890,16 +911,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/controller/lvq.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="12" column="19" selection-start-line="12" selection-start-column="19" selection-end-line="12" selection-end-column="19" />
-          <folding>
-            <element signature="e#0#18#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/controller/filereader.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="34">
@@ -927,16 +938,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/controller/testingWindowController.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="67" column="0" selection-start-line="67" selection-start-column="0" selection-end-line="67" selection-end-column="0" />
-          <folding>
-            <element signature="e#15#57#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/controller/databaseconnector.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="757">
@@ -947,9 +948,27 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/controller/batchcontroller.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="195">
+          <caret line="84" column="115" selection-start-line="84" selection-start-column="115" selection-end-line="84" selection-end-column="115" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/controller/testingWindowController.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="439">
+          <caret line="76" column="41" selection-start-line="76" selection-start-column="41" selection-end-line="76" selection-end-column="41" />
+          <folding>
+            <element signature="e#15#57#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/controller/trainingWindowController.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="371">
+        <state relative-caret-position="-751">
           <caret line="41" column="37" selection-start-line="41" selection-start-column="37" selection-end-line="41" selection-end-column="37" />
           <folding>
             <element signature="e#15#59#0" expanded="true" />
@@ -957,11 +976,13 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/controller/batchcontroller.py">
+    <entry file="file://$PROJECT_DIR$/controller/lvq.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="195">
-          <caret line="84" column="115" selection-start-line="84" selection-start-column="115" selection-end-line="84" selection-end-column="115" />
-          <folding />
+        <state relative-caret-position="187">
+          <caret line="17" column="47" selection-start-line="17" selection-start-column="41" selection-end-line="17" selection-end-column="47" />
+          <folding>
+            <element signature="e#0#18#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

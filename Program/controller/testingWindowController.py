@@ -68,8 +68,13 @@ class TestingWindow(QtGui.QMainWindow, testingWindow.Ui_TestWdw):
         result = self.lvq.test_data(self.features[:,1:14])
         print "vote : "+str(result)
 
-        self.speakerVal.setText(": "+str(result[0][0][:result[0][0].find('-')]))
-        self.wordVal.setText(": "+str(result[0][0][result[0][0].find('-')+1:]))
+        if result[0][0].find('-') != -1:
+            self.speakerVal.setText(": "+str(result[0][0][:result[0][0].find('-')]))
+            self.wordVal.setText(": "+str(result[0][0][result[0][0].find('-')+1:]))
+        else:
+            self.speakerVal.setText(": " + str(result[0][0]))
+            self.wordVal.setVisible(False)
+            self.wordLbl.setVisible(False)
 
     def extract_features(self):
         # frame blocking
