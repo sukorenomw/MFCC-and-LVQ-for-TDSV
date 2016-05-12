@@ -61,5 +61,5 @@ target/
 #Ipython Notebook
 .ipynb_checkpoints
 
-Program/.idea
-Program/database
+Program/.idea/
+Program/database/
