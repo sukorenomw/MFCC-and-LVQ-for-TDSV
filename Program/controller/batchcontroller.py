@@ -16,6 +16,8 @@ class ExtractThread(QtCore.QThread):
 
     def run(self):
         self.emit(QtCore.SIGNAL("update()"))
+        self.mfcc.frame_size = int(self.par.frameSizeVal.currentText())
+        self.mfcc.overlap = self.mfcc.frame_size/2
         for index,file_audio in enumerate(self.audio_files):
             file_audio = str(file_audio)
             self.audio_signal, self.audio_fs = FileReader.read_audio(file_audio)

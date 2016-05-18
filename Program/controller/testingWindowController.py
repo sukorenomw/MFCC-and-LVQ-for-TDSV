@@ -2,6 +2,7 @@
 import view.testingWindow as testingWindow
 import audioPlayer
 import trainingWindowController as twc
+import batchTestController as batch_test
 import numpy as np
 
 
@@ -40,8 +41,10 @@ class TestingWindow(QtGui.QMainWindow, testingWindow.Ui_TestWdw):
 
         self.actionExit.triggered.connect(self.close)
         self.actionTraining_Data.triggered.connect(self.open_train_wdw)
+        self.actionBatch_Testing.triggered.connect(self.open_batch_wdw)
         self.actionAbout_Qt.triggered.connect(QtGui.qApp.aboutQt)
         self.actionAbout.triggered.connect(self.about)
+
 
         self.openAudioBtn.clicked.connect(self.show_open_dialog)
         self.extractSaveBtn.clicked.connect(self.extract_features)
@@ -63,6 +66,10 @@ class TestingWindow(QtGui.QMainWindow, testingWindow.Ui_TestWdw):
         self.database_list = [f[:len(f) - 3] for f in listdir('database/') if isfile(join('database/', f))]
         self.databaseSelect.addItems(QtCore.QStringList(self.database_list))
 
+    def open_batch_wdw(self):
+        self.batch_wdw = batch_test.BatchTestWindow()
+        self.batch_wdw.show()
+
     def identify_speaker(self):
         self.lvq = LVQ(str(self.databaseSelect.currentText()))
         result = self.lvq.test_data(self.features[:,1:14])
@@ -77,6 +84,9 @@ class TestingWindow(QtGui.QMainWindow, testingWindow.Ui_TestWdw):
             self.wordLbl.setVisible(False)
 
     def extract_features(self):
+        self.mfcc.frame_size = int(self.frameSizeVal.currentText())
+        self.mfcc.overlap = self.mfcc.frame_size/2
+
         # frame blocking
         self.num_frames, self.framed_signal = self.mfcc.frame_blocking(self.silenced_signal)
 
@@ -98,7 +108,7 @@ class TestingWindow(QtGui.QMainWindow, testingWindow.Ui_TestWdw):
 
         fig = Figure()
         self.fftSignalPlot = fig.add_subplot(111)
-        self.fftSignalPlot.plot(self.fft_signal[:, :128].ravel(1))
+        self.fftSignalPlot.plot(self.fft_signal[:, :self.mfcc.frame_size/2].ravel(1))
         self.add_figure(fig, self.fftPloyLyt)
 
         # hitung filter bank

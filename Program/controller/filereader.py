@@ -16,6 +16,6 @@ class FileReader():
 
     @staticmethod
     def get_output_class(file):
-        str = file[file[:file.rfind('/')].rfind('/')+1:file.rfind('/')]+"-"+file[file.rfind('/') + 1:len(file)-5].capitalize()
+        str = file[file[:file.rfind('/')].rfind('/')+1:file.rfind('/')]+"-"+file[file.rfind('/') + 1:len(file)-4].capitalize()
         return ''.join(i for i in str if not i.isdigit())
 

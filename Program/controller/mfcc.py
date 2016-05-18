@@ -17,8 +17,8 @@ class MFCC():
     threshold = '0.3%'
 
     #parameter for fame blocking
-    frame_size = 256
-    overlap = 128
+    frame_size = 512
+    overlap = 256
 
     #parameter mel wrapping
     num_filter = 32
@@ -41,10 +41,10 @@ class MFCC():
             frames[i,:] = audio_signal[i*self.overlap:i*self.overlap+self.frame_size]
 
         print "Jumlah Frame: "+str(num_frame) if DEBUG else ''
-        print "signal(0): " + str(audio_signal[0]) if DEBUG else ''
-        print "signal(last): " + str(audio_signal[len(audio_signal)-1]) if DEBUG else ''
-        print "Frames[first]: " + str(frames[0, 0]) if DEBUG else ''
-        print "Frames[last]: " + str(frames[num_frame-1,self.frame_size-1]) if DEBUG else ''
+        # print "signal(0): " + str(audio_signal[0]) if DEBUG else ''
+        # print "signal(last): " + str(audio_signal[len(audio_signal)-1]) if DEBUG else ''
+        # print "Frames[first]: " + str(frames[0, 0]) if DEBUG else ''
+        # print "Frames[last]: " + str(frames[num_frame-1,self.frame_size-1]) if DEBUG else ''
 
         return [num_frame, frames]
 
@@ -124,7 +124,7 @@ class MFCC():
                 elif fft_bin[m] <= k <= fft_bin[m + 1]:
                     fbank[m-1, k-1] = (fft_bin[m + 1] - k) / (fft_bin[m + 1] - fft_bin[m])
 
-        return np.log(np.dot(fft[:,:128],fbank.T)), fbank
+        return np.log(np.dot(fft[:,:self.frame_size/2],fbank.T)), fbank
 
     def features(self, energy):
         return dct(energy, type=2, axis=1, norm='ortho')

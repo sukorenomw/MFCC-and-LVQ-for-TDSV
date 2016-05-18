@@ -553,7 +553,7 @@
       <property name="geometry">
        <rect>
         <x>10</x>
-        <y>70</y>
+        <y>120</y>
         <width>161</width>
         <height>51</height>
        </rect>
@@ -568,9 +568,9 @@ Verify</string>
       <property name="geometry">
        <rect>
         <x>10</x>
-        <y>130</y>
+        <y>180</y>
         <width>161</width>
-        <height>161</height>
+        <height>111</height>
        </rect>
       </property>
       <property name="title">
@@ -661,7 +661,7 @@ Verify</string>
       <property name="geometry">
        <rect>
         <x>10</x>
-        <y>40</y>
+        <y>90</y>
         <width>161</width>
         <height>20</height>
        </rect>
@@ -671,7 +671,7 @@ Verify</string>
       <property name="geometry">
        <rect>
         <x>10</x>
-        <y>20</y>
+        <y>70</y>
         <width>61</width>
         <height>16</height>
        </rect>
@@ -679,6 +679,44 @@ Verify</string>
       <property name="text">
        <string>Database : </string>
       </property>
+     </widget>
+     <widget class="QLabel" name="label">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>20</y>
+        <width>81</width>
+        <height>16</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Frame Size :</string>
+      </property>
+     </widget>
+     <widget class="QComboBox" name="frameSizeVal">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>40</y>
+        <width>81</width>
+        <height>22</height>
+       </rect>
+      </property>
+      <item>
+       <property name="text">
+        <string>128</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>256</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>512</string>
+       </property>
+      </item>
      </widget>
     </widget>
    </widget>
@@ -698,6 +736,8 @@ Verify</string>
     </property>
     <addaction name="actionTraining_Data"/>
     <addaction name="actionTest_Data"/>
+    <addaction name="separator"/>
+    <addaction name="actionBatch_Testing"/>
     <addaction name="separator"/>
     <addaction name="actionExit"/>
    </widget>
@@ -756,6 +796,15 @@ Verify</string>
    </property>
    <property name="text">
     <string>About Qt</string>
+   </property>
+  </action>
+  <action name="actionBatch_Testing">
+   <property name="icon">
+    <iconset resource="image_set.qrc">
+     <normaloff>:/icons/1462517805_FILE - BATCH.png</normaloff>:/icons/1462517805_FILE - BATCH.png</iconset>
+   </property>
+   <property name="text">
+    <string>Batch Testing</string>
    </property>
   </action>
  </widget>

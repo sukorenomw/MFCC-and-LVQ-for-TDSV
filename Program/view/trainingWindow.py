@@ -198,7 +198,7 @@ class Ui_MainWdw(object):
         self.learningRDecrVal.setDecimals(3)
         self.learningRDecrVal.setMaximum(9999.999)
         self.learningRDecrVal.setSingleStep(0.001)
-        self.learningRDecrVal.setProperty("value", 0.977)
+        self.learningRDecrVal.setProperty("value", 0.097)
         self.learningRDecrVal.setObjectName(_fromUtf8("learningRDecrVal"))
         self.iterVal = QtGui.QSpinBox(self.paramsGroup)
         self.iterVal.setGeometry(QtCore.QRect(70, 60, 61, 16))
