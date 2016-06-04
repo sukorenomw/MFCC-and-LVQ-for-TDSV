@@ -145,3 +145,11 @@ class MFCC():
                 out += energy[n] * np.cos(np.pi * n * (k + .5) / N)
             X[k] = out * np.sqrt(2. / N)
         return X
+
+    def get_feature_index(self, feature_set):
+        variances = []
+        for i in xrange(self.num_filter):
+            variances.append(np.var(feature_set[:,i]))
+
+        return variances
+

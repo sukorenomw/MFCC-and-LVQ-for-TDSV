@@ -1,4 +1,5 @@
 import view.batchTestWindow as batch_wdw
+import xlsxwriter as xlwt
 
 from lvq import LVQ
 from mfcc import MFCC
@@ -32,17 +33,20 @@ class TestingThread(QtCore.QThread):
             self.features = self.mfcc.features(self.log_energy)
 
             self.lvq = LVQ(str(self.par.databaseSelect.currentText()))
-            result = self.lvq.test_data(self.features[:, 1:14])
-            speaker = str(result[0][0])
-            word = speaker[speaker.rfind('-')+1:] if speaker.rfind('-') != -1 else "-"
+            # result = self.lvq.test_data(self.features[:, 1:14])
+            # [31, 28, 29, 30, 27, 26, 25, 24, 23, 22, 20, 21, 19]
+            result = self.lvq.test_data(self.features[:, [1, 2, 3, 4, 5, 7, 6, 9, 8, 10, 11, 12, 13]])
+            full = str(result[0][0])
+            speaker = full[:full.rfind('-')] if full.rfind('-') != -1 else full
+            word = full[full.rfind('-')+1:] if full.rfind('-') != -1 else "-"
             print "vote for file "+str(index)+" : " + str(result)
-            self.par.featuresTbl.setItem(index, 2, QtGui.QTableWidgetItem(speaker[:speaker.rfind('-')]))
+            self.par.featuresTbl.setItem(index, 2, QtGui.QTableWidgetItem(speaker))
             self.par.featuresTbl.setItem(index, 3, QtGui.QTableWidgetItem(word))
 
-            if speaker[:speaker.rfind('-')] == self.par.featuresTbl.item(index,0).text():
+            if speaker == self.par.featuresTbl.item(index,0).text():
                 speaker_correct += 1
 
-            if speaker[:speaker.rfind('-')] == self.par.featuresTbl.item(index,0).text() and word == self.par.featuresTbl.item(index,1).text():
+            if speaker == self.par.featuresTbl.item(index,0).text() and word == self.par.featuresTbl.item(index,1).text():
                 speaker_word_correct += 1
 
             self.par.speaker_word_acc = (speaker_word_correct / float(len(self.audio_files))) * 100
@@ -68,9 +72,13 @@ class BatchTestWindow(QtGui.QMainWindow, batch_wdw.Ui_MainWdw):
 
         self.openAudioBtn.clicked.connect(self.show_open_dialog)
         self.startTestBtn.clicked.connect(self.start_testing)
+        self.exportCSVBtn.clicked.connect(self.handleSave)
+        self.clrFilesBtn.clicked.connect(self.clear_all_files)
 
         self.startTestBtn.setDisabled(True)
         self.frameSizeVal.setDisabled(True)
+
+        self.clip = QtGui.QApplication.clipboard()
 
     def init_databases(self):
         self.database_list = [f[:len(f) - 3] for f in listdir('database/') if isfile(join('database/', f))]
@@ -86,6 +94,46 @@ class BatchTestWindow(QtGui.QMainWindow, batch_wdw.Ui_MainWdw):
         testing.start()
         QtCore.QObject.connect(testing, QtCore.SIGNAL("finish()"), self.finish_thread)
         QtCore.QObject.connect(testing, QtCore.SIGNAL("update()"), self.update_progress)
+
+    def handleSave(self):
+            filename = unicode(QtGui.QFileDialog.getSaveFileName(self, 'Save File', '', ".xlsx(*.xlsx)", None,
+                                                                 QtGui.QFileDialog.DontUseNativeDialog
+                                                                 ))
+
+            if filename != "":
+                wbk = xlwt.Workbook(filename)
+                sheet = wbk.add_worksheet()
+
+                row = 0
+                col = 0
+                sheet.write(0, 0, "Expected Speaker")
+                sheet.write(0, 1, "Expected Word")
+                sheet.write(0, 2, "Output Speaker")
+                sheet.write(0, 3, "Output Word")
+                for i in range(self.featuresTbl.columnCount()):
+                    for x in range(self.featuresTbl.rowCount()):
+                        try:
+                            teext = str(self.featuresTbl.item(row, col).text())
+                            sheet.write(row+1, col, teext)
+                            row += 1
+                        except AttributeError:
+                            row += 1
+                    row = 0
+                    col += 1
+
+                sheet.write(self.featuresTbl.rowCount() + 1, 0, "Akurasi")
+                sheet.write(self.featuresTbl.rowCount() + 1, 2, str(self.accuracyVal.text()))
+                sheet.write(self.featuresTbl.rowCount() + 1, 3, str(self.speakerAccVal.text()))
+                wbk.close()
+
+    def clear_all_files(self):
+        self.audio_files = []
+        self.featuresTbl.clear()
+        self.featuresTbl.setRowCount(0)
+        self.featuresTbl.setHorizontalHeaderItem(0, QtGui.QTableWidgetItem("Expected Speaker"))
+        self.featuresTbl.setHorizontalHeaderItem(1, QtGui.QTableWidgetItem("Expected Word"))
+        self.featuresTbl.setHorizontalHeaderItem(2, QtGui.QTableWidgetItem("Output Speaker"))
+        self.featuresTbl.setHorizontalHeaderItem(3, QtGui.QTableWidgetItem("Output Word"))
 
     def show_open_dialog(self):
         audioFiles = QtGui.QFileDialog.getOpenFileNames(self, 'Open audio file',
@@ -121,3 +169,22 @@ class BatchTestWindow(QtGui.QMainWindow, batch_wdw.Ui_MainWdw):
         self.n += 1
         self.audioFilenameLbl_3.setText(": " + str(self.n - 1))
         self.progressBar.setValue(self.n)
+
+    def keyPressEvent(self, e):
+        if (e.modifiers() & QtCore.Qt.ControlModifier):
+            selected = self.featuresTbl.selectedRanges()
+
+            if e.key() == QtCore.Qt.Key_C:  # copy
+                s = '\t' + "\t".join([str(self.featuresTbl.horizontalHeaderItem(i).text()) for i in
+                                      xrange(selected[0].leftColumn(), selected[0].rightColumn() + 1)])
+                s = s + '\n'
+
+                for r in xrange(selected[0].topRow(), selected[0].bottomRow() + 1):
+                    # s += self.featuresTbl.verticalHeaderItem(r).text() + '\t'
+                    for c in xrange(selected[0].leftColumn(), selected[0].rightColumn() + 1):
+                        try:
+                            s += str(self.featuresTbl.item(r, c).text()) + "\t"
+                        except AttributeError:
+                            s += "\t"
+                    s = s[:-1] + "\n"  # eliminate last '\t'
+                self.clip.setText(s)

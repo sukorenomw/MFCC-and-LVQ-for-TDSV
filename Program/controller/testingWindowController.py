@@ -72,7 +72,9 @@ class TestingWindow(QtGui.QMainWindow, testingWindow.Ui_TestWdw):
 
     def identify_speaker(self):
         self.lvq = LVQ(str(self.databaseSelect.currentText()))
-        result = self.lvq.test_data(self.features[:,1:14])
+        # result = self.lvq.test_data(self.features[:, 1:14])
+        # [31, 28, 29, 30, 27, 26, 25, 24, 23, 22, 20, 21, 19]
+        result = self.lvq.test_data(self.features[:,[1, 2, 3, 4, 5, 7, 6, 9, 8, 10, 11, 12, 13]])
         print "vote : "+str(result)
 
         if result[0][0].find('-') != -1:

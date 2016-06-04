@@ -325,7 +325,7 @@
        </property>
       </item>
      </widget>
-     <widget class="QPushButton" name="pushButton">
+     <widget class="QPushButton" name="exportCSVBtn">
       <property name="geometry">
        <rect>
         <x>554</x>
@@ -431,6 +431,19 @@
       </property>
       <property name="text">
        <string>Speaker :</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="clrFilesBtn">
+      <property name="geometry">
+       <rect>
+        <x>140</x>
+        <y>90</y>
+        <width>75</width>
+        <height>23</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Clear All</string>
       </property>
      </widget>
     </widget>

@@ -35,7 +35,7 @@ class LVQ():
         # new_weight = np.zeros((len(ref_vectors),ref_vectors[0,3].shape[0]))
         new_weight = ref_vectors[:,[3,4]]
 
-        while max_epoh > 0 and alpha > 0.01:
+        while max_epoh > 0:
             for data in data_set:
                 temp = []
                 for ref in ref_vectors:
@@ -56,6 +56,7 @@ class LVQ():
             max_epoh-=1
             alpha-=(alpha_decay * alpha)
 
+        print max_epoh
         return new_weight
 
     def test_data(self, features):
