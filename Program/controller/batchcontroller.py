@@ -1,6 +1,5 @@
 import view.batchTrainWindow as batch_wdw
 import numpy as np
-import statistics as st
 import xlsxwriter as xlwt
 
 from databaseconnector import TYPE
@@ -8,6 +7,7 @@ from databaseconnector import DatabaseConnector
 from mfcc import MFCC
 from filereader import FileReader
 from PyQt4 import QtCore, QtGui
+from random import sample
 
 
 class ExtractThread(QtCore.QThread):
@@ -103,6 +103,7 @@ class BatchWindow(QtGui.QMainWindow, batch_wdw.Ui_MainWdw):
 
         self.openAudioBtn.clicked.connect(self.show_open_dialog)
         self.extractSaveBtn.clicked.connect(self.extract_and_save)
+        self.shuffleBtn.clicked.connect(self.shuffle_files)
 
         self.inclWordCheck.clicked.connect(self.include_word)
 
@@ -124,6 +125,12 @@ class BatchWindow(QtGui.QMainWindow, batch_wdw.Ui_MainWdw):
             self.featuresTbl.setItem(currentRow, 1, QtGui.QTableWidgetItem(str(FileReader.get_output_class(str(file)))))
 
         self.audioFilenameLbl.setText(": " + str(len(self.audio_files)))
+
+    def shuffle_files(self):
+        self.audio_files = sample(self.audio_files, len(self.audio_files))
+        for i in xrange(self.featuresTbl.rowCount()):
+            self.featuresTbl.setItem(i, 0, QtGui.QTableWidgetItem(str(self.audio_files[i])))
+            self.featuresTbl.setItem(i, 1, QtGui.QTableWidgetItem(str(FileReader.get_output_class(str(self.audio_files[i])))))
 
     def include_word(self):
         if self.inclWordCheck.isChecked():

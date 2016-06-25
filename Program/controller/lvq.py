@@ -2,6 +2,7 @@ import numpy as np
 
 from databaseconnector import DatabaseConnector
 from collections import Counter
+from PyQt4 import QtCore
 
 class LVQ():
     def __init__(self, database_name):
@@ -28,35 +29,39 @@ class LVQ():
         return np.asarray(self.db.select_exclude("features","id",ref_vector[:,0]), dtype=object)
 
     def eucl(self, x, y):
-        return np.sqrt(np.sum((x - y) ** 2))
+        # return np.sqrt(np.sum((x - y) ** 2))
+        return np.linalg.norm(x-y)
 
-    def start_training(self,ref_vectors, data_set, max_epoh, alpha, alpha_decay):
-        old_weight = ref_vectors[:,3]
-        # new_weight = np.zeros((len(ref_vectors),ref_vectors[0,3].shape[0]))
+    def start_training(self, ref_vectors, data_set, max_epoh, alpha, alpha_decay, min_alpha, thread):
+        #old_weight = ref_vectors[:,[3,4]]
         new_weight = ref_vectors[:,[3,4]]
 
-        while max_epoh > 0:
-            for data in data_set:
+        # while max_epoh > 0 and alpha >= min_alpha:
+        for epoch in xrange(max_epoh):
+            for idx, data in enumerate(data_set):
                 temp = []
-                for ref in ref_vectors:
-                    # temp.append([ref[4],self.eucl(data[3],ref[3])])
-                    temp.append(self.eucl(data[3], ref[3]))
+                for ref in new_weight:
+                    temp.append(self.eucl(data[3], ref[0]))
+
+                index = np.argmin(temp)
+                data_min = new_weight[index]
+                # print str(data_min[1])
+                if(str(data_min[1]) == str(data[4])):
+                    #new_weight[index, 0] = old_weight[index, 0] + (alpha * (data[3] - old_weight[index, 0]))
+                    new_weight[index, 0] += alpha * (data[3] - new_weight[index, 0])
+                else:
+                    #new_weight[index, 0] = old_weight[index, 0] - (alpha * (data[3] - old_weight[index, 0]))
+                    new_weight[index, 0] -= alpha * (data[3] - new_weight[index, 0])
 
                 # print "temp : "+str(temp)
                 # print "dataset : "+str(data)+"\nindex: "+str(index)
                 # print "panjang temp: "+str(len(temp))
-                index = np.argmin(temp)
-                data_min = ref_vectors[index]
+                # print "min index:"+str(index)
 
-                if(str(data_min[4]) == str(data[4])):
-                    new_weight[index,0] = old_weight[index] - alpha * (data[3] - old_weight[index])
-                else:
-                    new_weight[index,0] = old_weight[index] + alpha * (data[3] - old_weight[index])
+            thread.emit(QtCore.SIGNAL("update()"))
+            alpha -= (alpha_decay * alpha)
 
-            max_epoh-=1
-            alpha-=(alpha_decay * alpha)
 
-        print max_epoh
         return new_weight
 
     def test_data(self, features):

@@ -343,7 +343,7 @@
        <rect>
         <x>230</x>
         <y>280</y>
-        <width>71</width>
+        <width>131</width>
         <height>21</height>
        </rect>
       </property>
@@ -353,15 +353,15 @@
        </font>
       </property>
       <property name="text">
-       <string>Accuracy :</string>
+       <string>Identification Rate :</string>
       </property>
      </widget>
      <widget class="QLabel" name="accuracyVal">
       <property name="geometry">
        <rect>
-        <x>310</x>
+        <x>360</x>
         <y>280</y>
-        <width>71</width>
+        <width>81</width>
         <height>21</height>
        </rect>
       </property>
@@ -397,42 +397,6 @@
        </rect>
       </property>
      </widget>
-     <widget class="QLabel" name="speakerAccVal">
-      <property name="geometry">
-       <rect>
-        <x>470</x>
-        <y>280</y>
-        <width>71</width>
-        <height>21</height>
-       </rect>
-      </property>
-      <property name="font">
-       <font>
-        <pointsize>11</pointsize>
-       </font>
-      </property>
-      <property name="text">
-       <string/>
-      </property>
-     </widget>
-     <widget class="QLabel" name="accuracyLbl_2">
-      <property name="geometry">
-       <rect>
-        <x>400</x>
-        <y>280</y>
-        <width>71</width>
-        <height>21</height>
-       </rect>
-      </property>
-      <property name="font">
-       <font>
-        <pointsize>11</pointsize>
-       </font>
-      </property>
-      <property name="text">
-       <string>Speaker :</string>
-      </property>
-     </widget>
      <widget class="QPushButton" name="clrFilesBtn">
       <property name="geometry">
        <rect>
@@ -444,6 +408,29 @@
       </property>
       <property name="text">
        <string>Clear All</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="reloadDatabaseBtn">
+      <property name="geometry">
+       <rect>
+        <x>70</x>
+        <y>100</y>
+        <width>21</width>
+        <height>16</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="icon">
+       <iconset resource="image_set.qrc">
+        <normaloff>:/icons/1462919668_Update.png</normaloff>:/icons/1462919668_Update.png</iconset>
+      </property>
+      <property name="iconSize">
+       <size>
+        <width>12</width>
+        <height>12</height>
+       </size>
       </property>
      </widget>
     </widget>

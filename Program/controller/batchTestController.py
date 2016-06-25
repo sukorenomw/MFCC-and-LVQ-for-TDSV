@@ -36,10 +36,11 @@ class TestingThread(QtCore.QThread):
             # result = self.lvq.test_data(self.features[:, 1:14])
             # [31, 28, 29, 30, 27, 26, 25, 24, 23, 22, 20, 21, 19]
             result = self.lvq.test_data(self.features[:, [1, 2, 3, 4, 5, 7, 6, 9, 8, 10, 11, 12, 13]])
+            print "vote for file " + str(index) + " : " + str(result)
+            # full = str(result[1][0]) if len(result) >= 2 else str(result[0][0])
             full = str(result[0][0])
             speaker = full[:full.rfind('-')] if full.rfind('-') != -1 else full
             word = full[full.rfind('-')+1:] if full.rfind('-') != -1 else "-"
-            print "vote for file "+str(index)+" : " + str(result)
             self.par.featuresTbl.setItem(index, 2, QtGui.QTableWidgetItem(speaker))
             self.par.featuresTbl.setItem(index, 3, QtGui.QTableWidgetItem(word))
 
@@ -66,6 +67,9 @@ class BatchTestWindow(QtGui.QMainWindow, batch_wdw.Ui_MainWdw):
 
         self.speaker_only_acc = 0.0
         self.speaker_word_acc = 0.0
+
+        self.test = 1
+        self.test_phase = 1
 
         self.audio_files = []
         self.progressLbl.setVisible(False)
@@ -100,31 +104,35 @@ class BatchTestWindow(QtGui.QMainWindow, batch_wdw.Ui_MainWdw):
                                                                  QtGui.QFileDialog.DontUseNativeDialog
                                                                  ))
 
+            print filename
             if filename != "":
-                wbk = xlwt.Workbook(filename)
-                sheet = wbk.add_worksheet()
+                self.save_xlsx(filename)
 
-                row = 0
-                col = 0
-                sheet.write(0, 0, "Expected Speaker")
-                sheet.write(0, 1, "Expected Word")
-                sheet.write(0, 2, "Output Speaker")
-                sheet.write(0, 3, "Output Word")
-                for i in range(self.featuresTbl.columnCount()):
-                    for x in range(self.featuresTbl.rowCount()):
-                        try:
-                            teext = str(self.featuresTbl.item(row, col).text())
-                            sheet.write(row+1, col, teext)
-                            row += 1
-                        except AttributeError:
-                            row += 1
-                    row = 0
-                    col += 1
+    def save_xlsx(self, filename):
+        wbk = xlwt.Workbook(filename)
+        sheet = wbk.add_worksheet()
 
-                sheet.write(self.featuresTbl.rowCount() + 1, 0, "Akurasi")
-                sheet.write(self.featuresTbl.rowCount() + 1, 2, str(self.accuracyVal.text()))
-                sheet.write(self.featuresTbl.rowCount() + 1, 3, str(self.speakerAccVal.text()))
-                wbk.close()
+        row = 0
+        col = 0
+        sheet.write(0, 0, "Expected Speaker")
+        sheet.write(0, 1, "Expected Word")
+        sheet.write(0, 2, "Output Speaker")
+        sheet.write(0, 3, "Output Word")
+        for i in range(self.featuresTbl.columnCount()):
+            for x in range(self.featuresTbl.rowCount()):
+                try:
+                    teext = str(self.featuresTbl.item(row, col).text())
+                    sheet.write(row + 1, col, teext)
+                    row += 1
+                except AttributeError:
+                    row += 1
+            row = 0
+            col += 1
+
+        sheet.write(self.featuresTbl.rowCount() + 1, 0, "Identification Rate")
+        sheet.write(self.featuresTbl.rowCount() + 1, 2, str(self.accuracyVal.text()))
+
+        wbk.close()
 
     def clear_all_files(self):
         self.audio_files = []
@@ -142,6 +150,7 @@ class BatchTestWindow(QtGui.QMainWindow, batch_wdw.Ui_MainWdw):
                                                         None, QtGui.QFileDialog.DontUseNativeDialog)
 
         for file in audioFiles:
+            self.indic = 4 if str(file).rfind('4 Detik') != -1 else 8
             speaker = str(FileReader.get_output_class(str(file)))
             word = speaker[speaker.rfind('-')+1:] if speaker.rfind('-') != -1 else ""
             self.audio_files.append(file)
@@ -158,12 +167,25 @@ class BatchTestWindow(QtGui.QMainWindow, batch_wdw.Ui_MainWdw):
         self.progressLbl.setStyleSheet("color:green;")
         self.progressLbl.setText("COMPLETE!")
 
-        self.accuracyVal.setText(str(self.speaker_word_acc)+"%")
-        self.speakerAccVal.setText(str(self.speaker_only_acc)+"%")
+        self.accuracyVal.setText(str(round(self.speaker_only_acc,2))+"%")
+
+
+        paths = '../Data/Hasil Uji/'+str(self.indic)+' Detik/'
+        last_file = listdir(paths)[-1]
+
+        test_num = int(last_file[last_file.rfind('-') - 1])
+        test_phase = int(last_file[last_file.rfind('-') + 1])
+
+        test_num = test_num if test_phase < 3 else test_num + 1
+        test_phase = test_phase + 1 if test_phase < 3 else 1
+
+        print "E:/College/SKRIPSI TA/Data/Hasil Uji/"+str(self.indic)+" detik/test"+str(test_num)+"-"+str(test_phase)+".xlsx"
+
+        self.save_xlsx("E:/College/SKRIPSI TA/Data/Hasil Uji/"+str(self.indic)+" detik/test"+str(test_num)+"-"+str(test_phase)+".xlsx")
 
         QtGui.QMessageBox.information(None, "Success!",
                                       "Testing " + str(len(self.audio_files)) + " files complete!\n"
-                                      "Accuracy : "+str(self.speaker_word_acc)+"%")
+                                      "Identification Rate : "+str(round(self.speaker_only_acc,2))+"%")
 
     def update_progress(self):
         self.n += 1

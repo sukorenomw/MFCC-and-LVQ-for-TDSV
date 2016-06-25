@@ -41,20 +41,26 @@ class DBThread(QtCore.QThread):
 
 class LVQTrainThread(QtCore.QThread):
     taskFinished = QtCore.pyqtSignal(numpy.ndarray)
-    def __init__(self, parent, lvq, max_epoh, alpha, alpha_decay, database_name):
+    def __init__(self, parent, lvq, max_epoh, alpha, alpha_decay, min_alpha, database_name):
         QtCore.QThread.__init__(self, parent)
         self.db = DatabaseConnector(database_name)
         self.lvq = lvq
         self.max_epoh = max_epoh
         self.alpha = alpha
         self.alpha_decay = alpha_decay
+        self.min_alpha = min_alpha
+        self.par = parent
+
 
     def run(self):
         self.ref_vectors = self.lvq.init_ref_vector()
         self.data_sets = self.lvq.init_data_set(self.ref_vectors)
+        self.par.trainProgress.setMaximum(int(self.max_epoh.value()))
         self.final_weight = self.lvq.start_training(self.ref_vectors, self.data_sets, int(self.max_epoh.value()),
                                                     float(self.alpha.value()),
-                                                    float(self.alpha_decay.value()))
+                                                    float(self.alpha_decay.value()),
+                                                    float(self.min_alpha.value()),
+                                                    self)
 
         self.db.insert_weight(self.final_weight)
 
@@ -93,7 +99,7 @@ class MainWindow(QtGui.QMainWindow, trainingWindow.Ui_MainWdw):
         self.databaseSelect.addItems(QtCore.QStringList(self.database_list))
 
     def open_test_wdw(self):
-        self.hide()
+        # self.hide()
         self.testWdw = twc.TestingWindow()
         self.testWdw.show()
 
@@ -139,11 +145,16 @@ class MainWindow(QtGui.QMainWindow, trainingWindow.Ui_MainWdw):
         self.iterVal.setDisabled(True)
         self.learningRDecrVal.setDisabled(True)
         self.learningRVal.setDisabled(True)
-        self.trainProgress.setRange(0,0)
+        self.minAlpha.setDisabled(True)
+        self.n = 0
+        #self.trainProgress.setRange(0,0)
 
-        trainingThread = LVQTrainThread(self,self.lvq, self.iterVal, self.learningRVal, self.learningRDecrVal, str(self.databaseSelect.currentText()))
+
+
+        trainingThread = LVQTrainThread(self,self.lvq, self.iterVal, self.learningRVal, self.learningRDecrVal, self.minAlpha,str(self.databaseSelect.currentText()))
         trainingThread.start()
         trainingThread.taskFinished.connect(self.finish_training)
+        QtCore.QObject.connect(trainingThread, QtCore.SIGNAL("update()"), self.update_progress)
 
     def finish_training(self, final_weight):
         self.newWeightTbl.setRowCount(final_weight.shape[0])
@@ -155,13 +166,14 @@ class MainWindow(QtGui.QMainWindow, trainingWindow.Ui_MainWdw):
                 # print "i: "+str(i)+" j: "+str(j)+" isi: "+str(isi_feature)
                 self.newWeightTbl.setItem(i, j, weight)
 
-        self.trainProgress.setRange(0,1)
-        self.trainProgress.setValue(1)
+        # self.trainProgress.setRange(0,1)
+        # self.trainProgress.setValue(1)
 
         self.trainDataBtn.setDisabled(False)
         self.iterVal.setDisabled(False)
         self.learningRDecrVal.setDisabled(False)
         self.learningRVal.setDisabled(False)
+        self.minAlpha.setDisabled(False)
 
         QtGui.QMessageBox.information(None, "Success!",
                                       "Training data complete!")

@@ -15,11 +15,12 @@ def timetest(func, *args):
 
 def allfunc():
     mfcc=MFCC()
-    signal, fs = FileReader.read_audio('buka-silenced.wav')
-    frame, framed = mfcc.frame_blocking(signal)
+    signal, fs = FileReader.read_audio('1.wav')
+    silenced_signal, fs = mfcc.remove_silence('1.wav')
+    frame, framed = mfcc.frame_blocking(silenced_signal)
     windowed = mfcc.hamm_window(framed)
     fft = mfcc.calc_fft(windowed)
     energy, fbank = mfcc.fbank(fft,fs)
     features = mfcc.features(energy)
 
-    return mfcc, signal, fs, frame, framed, windowed, fft, energy, fbank, features
+    return mfcc, signal, silenced_signal,fs, frame, framed, windowed, fft, energy, fbank, features
